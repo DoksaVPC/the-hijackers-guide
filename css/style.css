@@ -21,7 +21,7 @@ html {
 }
 
 #player-2{
-  background: Aquamarine;
+  background: DarkCyan;
   top: 0;
   left: 50%;
   width: 50%;
@@ -29,7 +29,7 @@ html {
 }
 
 #player-3{
-  background-color: CornflowerBlue;
+  background-color: NavajoWhite;
   top: 50%;
   left: 0;
   width: 50%;
@@ -39,9 +39,17 @@ html {
 #player-4{
   background-color: DarkSlateBlue;
   top: 50%;
-  left: 50%;
+  left: 0%;
   width: 50%;
   height: 50%;
+}
+
+#player-5{
+  background-color: IndianRed;
+}
+
+#player-6{
+  background-color: #141414;
 }
 
 #player-handler{
