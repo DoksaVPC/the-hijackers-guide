@@ -2,7 +2,7 @@ const wrapper = document.getElementById("wrapper");
 const handler = document.getElementById("player-handler");
 const controller = document.getElementById("controller");
 const handlerSize = 30;
-const controllerSize = 0;
+const controllerSize = 60;
 
 const player1 = document.getElementById("player-1");
 const player2 = document.getElementById("player-2");
