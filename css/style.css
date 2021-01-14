@@ -2,7 +2,7 @@
 
 html {
     box-sizing: border-box;
-    color: white;
+    color: GhostWhite;
     font-family: 'Syne', sans-serif;
     height: 100%;
 }
@@ -72,14 +72,13 @@ body {
 .player-container{
   position: absolute;
   background-color: #141414;
-  border-bottom: 0.25pt solid white;
-  border-right: 0.25pt solid white;
+  border: 0.25pt solid GhostWhite;
   overflow: hidden;
   padding: 0.1em;
   clip-path: inset(0 0 0 0);
 }
 
-.title {
+#title {
   padding: 0 2em 0 2em;
   font-size: 1.2em;
 }
@@ -92,6 +91,8 @@ body {
 
 #immagine{
   position: fixed;
+  background-image: url('../assets/images/blm.jpg');
+  background-size: cover;
 }
 #video{
   position: fixed;
@@ -138,7 +139,7 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  background-color: white;
+  background-color: GhostWhite;
   border-radius: 100%;
   cursor: pointer;
 }

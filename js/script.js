@@ -2,7 +2,7 @@ const wrapper = document.getElementById("wrapper");
 const handler = document.getElementById("player-handler");
 const controller = document.getElementById("controller");
 const handlerSize = 30;
-const controllerSize = 40;
+const controllerSize = 60;
 
 const player1 = document.getElementById("player-1");
 const player2 = document.getElementById("player-2");
@@ -12,6 +12,7 @@ const player5 = document.getElementById("player-5");
 const player6 = document.getElementById("player-6");
 const immagine = document.getElementById("immagine");
 const video = document.getElementById("video");
+const title = document.getElementById("title");
 
 
 let width = document.documentElement.clientWidth;
@@ -20,12 +21,12 @@ let height = document.documentElement.clientHeight;
 let handlerXperc = handlerSize/2 * 100 / width;
 let handlerYperc = handlerSize/2 * 100 / height;
 let controllerPerc = controllerSize * 100 / height;
-let wrapperwidth = (height - controllerSize) / 9 * 16;
+let wrapperwidth = (height - controllerSize) / 9 * 16.5;
 let wrapperwidthPerc = wrapperwidth * 100 / width;
 const minY = 25;
 const maxY = (height - controllerSize) / 3 * 2 * 100 / height;
 const minX = 20;
-const maxX = 60;
+const maxX = 70;
 let isDragging = false;
 
 const barWidth = (100 - wrapperwidthPerc) / 3;
@@ -41,7 +42,8 @@ bar3.style.left = 100 - barWidth + 'vw';
 
 immagine.style.left = minX/2 + 'vw';
 immagine.style.top = minY + 'vh';
-immagine.style.width = maxX - minX /4 + 'vw';
+immagine.style.width = maxX - minX/2 + 'vw';
+immagine.style.height = 100 - controllerPerc - minY + 'vh';
 video.style.minWidth = wrapperwidthPerc / 3 * 2 + handlerXperc + 'vw';
 
 wrapper.style.width = wrapperwidthPerc + '%';
@@ -120,4 +122,5 @@ function setPositionY(y){
   player5.style.top = y + handlerYperc + 'vh';
   player6.style.height = 100 - (y + handlerYperc) - controllerPerc + 'vh';
   player6.style.top = y + handlerYperc + 'vh';
+  title.style.fontSize = 1.6 * y/maxY + 'em';
 }
