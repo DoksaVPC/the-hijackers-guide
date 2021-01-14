@@ -122,5 +122,5 @@ function setPositionY(y){
   player5.style.top = y + handlerYperc + 'vh';
   player6.style.height = 100 - (y + handlerYperc) - controllerPerc + 'vh';
   player6.style.top = y + handlerYperc + 'vh';
-  title.style.fontSize = 1.6 * y/maxY + 'em';
+  title.style.fontSize = 1.2 * y/maxY + 'em';
 }
