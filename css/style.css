@@ -2,42 +2,126 @@
 
 html {
     box-sizing: border-box;
+    color: white;
+    font-family: 'Syne', sans-serif;
+    height: 100%;
 }
 
-.wrapper{
-  width: 100vw;
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+  width:100%;
+}
+
+.nav-button{
+  position: absolute;
+  left:16px;
+  width: 60px;
+  height: 60px;
+  z-index: 999;
+}
+
+#home{
+  top:16px;
+}
+#about{
+  top: 86px;
+}
+
+#wrapper{
+  position: absolute;
   height: 100%;
   background-color: black;
 }
 
+#bars-container{
+  position: absolute;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+.bar{
+  position: absolute;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#guideline-2{
+  background-color: #1EDA96;
+}
+#guideline-3{
+  background-color: #FFAF14;
+}
+#guideline-4{
+  background-color: #3BB8FF;
+}
+
+#controller{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #282828;
+}
+
 .player-container{
   position: absolute;
+  background-color: #141414;
+  border-bottom: 0.25pt solid white;
+  border-right: 0.25pt solid white;
+  overflow: hidden;
+  padding: 0.1em;
+  clip-path: inset(0 0 0 0);
+}
+
+.title {
+  padding: 0 2em 0 2em;
+  font-size: 1.2em;
+}
+
+.body-text{
+  padding: 0 2em 0 2em;
+  line-height: 1.6em;
+  letter-spacing: 0.05em;
+}
+
+#immagine{
+  position: fixed;
+}
+#video{
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 
 #player-1{
-  background-color: AliceBlue;
   width: 50%;
   height: 50%;
 }
 
 #player-2{
-  background: DarkCyan;
   top: 0;
   left: 50%;
   width: 50%;
   height: 50%;
+  font-weight: 700;
+  color: #CD7FF2;
 }
 
 #player-3{
-  background-color: NavajoWhite;
   top: 50%;
   left: 0;
   width: 50%;
   height: 50%;
+  overflow-y: scroll;
 }
 
 #player-4{
-  background-color: DarkSlateBlue;
   top: 50%;
   left: 0%;
   width: 50%;
@@ -45,11 +129,9 @@ html {
 }
 
 #player-5{
-  background-color: IndianRed;
 }
 
 #player-6{
-  background-color: #141414;
 }
 
 #player-handler{
@@ -58,8 +140,5 @@ html {
   left: 50%;
   background-color: white;
   border-radius: 100%;
-  width: 2em;
-  height: 2em;
-  border: solid gray 1pt;
   cursor: pointer;
 }
