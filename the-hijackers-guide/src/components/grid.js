@@ -15,7 +15,7 @@ let location = useLocation();
 
   return (
     <div className="flex-wrapper">
-    <div className="fadeIn flex-wrapper" style={{backgroundColor: '#1c1c1c'}}>
+    <div className="flex-wrapper fadeIn" style={{backgroundColor: props.color}}>
     <div
       className="grid"
       style={{

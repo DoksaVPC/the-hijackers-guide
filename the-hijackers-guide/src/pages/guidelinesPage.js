@@ -11,20 +11,20 @@ function GuidelinesPage() {
       className="flex-wrapper"
       style={{ paddingLeft: 0, paddingRight: 0 }}
     >
+      <Section sectionId="01"/>
+
+      <Section sectionId='02'/>
+
+      <Section sectionId='03'/>
+
+      <Section sectionId='04'/>
+
       {location.pathname === "/guidelines" && (
         <h1>
           {" "}
           The Hijacker's Guide <br /> to Digital Activism{" "}
         </h1>
       )}
-
-      <Section sectionId="01" color="red" />
-
-      <Section sectionId='02' color="green" />
-
-      <Section sectionId='03' color='blue' />
-
-      <Section sectionId='04' color='lightblue' />
     </div>
   );
 }
