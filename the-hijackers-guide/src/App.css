@@ -1,3 +1,12 @@
+html {
+  box-sizing: border-box;
+  background-color: #1c1c1c;
+  color: white;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +44,82 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav-container{
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.nav-button{
+  display: flex;
+  pointer-events: auto;
+  width: 64px;
+  margin-bottom: 20px;
+  height: 64px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+}
+
+.nav-button img {
+  width: 100%;
+  position: absolute;
+}
+
+.nav-button div {
+  position: absolute;
+  font-size: 10pt;
+  text-align: center;
+  color: black;
+}
+
+.flex-wrapper {
+  overflow-x: hidden;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.flex-wrapper h1{
+  pointer-events: none;
+  width: 100%;
+  text-align: center;
+  font-size: 8em;
+  position:absolute;
+}
+
+.guidelines-section {
+  min-width: 4em;
+  width: 0;
+  overflow: hidden;
+  flex-grow: 1;
+  height: 100vh;
+  transition: width 0.4s;
+}
+
+.guidelines-section:hover{
+  width: 15em;
+}
+
+.fadeIn{
+  width: 0%;
+  animation-name: expand;
+  animation-duration: 0.4s;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes expand {
+  from {width: 0%}
+  to {width: 100%}
 }

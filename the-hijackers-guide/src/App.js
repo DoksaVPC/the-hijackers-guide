@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import {
+  Route,
+  Switch,
+  Link,
+  useLocation
+} from "react-router-dom";
+import GuidelinesPage from './pages/guidelinesPage';
+import Guideline from './pages/guideline';
+import Onboarding from './pages/onboarding';
+import About from './pages/about'
+import Nav from './components/nav';
 
 function App() {
+  let location = useLocation();
+  let background = location.state && location.state.background;
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {location.pathname !== '/' && <Nav/>}
+    <Switch location={background || location}>
+      <Route exact path="/" children={<Onboarding/>} />
+      <Route path="/guidelines" children={<GuidelinesPage/>} />
+      <Route path="/disclosure" children={<About/>} />
+    </Switch>
+    {background && <Route path="/guideline/:id" children={<Guideline/>} />}
     </div>
   );
 }
