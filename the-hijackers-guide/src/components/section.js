@@ -45,7 +45,7 @@ const DARK_COLORS = {
 
           </div>
         </Link>
-      ) : (<Grid color={COLORS.black}/>) }
+      ) : (<Grid color={COLORS[props.sectionId]}/>) }
     </div>
   );
 }

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import {useLocation } from "react-router-dom";
 import Section from '../components/section';
 
 function GuidelinesPage() {
