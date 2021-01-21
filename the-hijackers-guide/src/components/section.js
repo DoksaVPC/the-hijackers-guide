@@ -15,10 +15,17 @@ const COLORS = {
 }
 
 const DARK_COLORS = {
-  '01': '#6c2391',
-  '02': '#0b5238',
-  '03': '#5e4108',
-  '04': '#0a3d5c',
+  '01': '#a05ebf',
+  '02': '#16a873',
+  '03': '#c2840e',
+  '04': '#3BB8FF',
+}
+
+const TITLES = {
+  '01': 'Hashtag',
+  '02': 'Social Media',
+  '03': 'The Perfect Moment',
+  '04': 'Hijacking Tactics'
 }
 
   return (
@@ -38,14 +45,19 @@ const DARK_COLORS = {
             <div>
             <video loop className="preview-video" onMouseOver={event => event.target.play()}
   onMouseOut={event => event.target.pause()}><source src={"./assets/preview-" + props.sectionId + ".mp4"}/></video>
-          <div className="duotone duotone-light" style={{backgroundColor: COLORS[props.sectionId]}}></div>
-          <div className="duotone duotone-dark" style={{backgroundColor: DARK_COLORS[props.sectionId]}}></div>
+          <div className="duotone duotone-dark" style={{backgroundColor: DARK_COLORS[props.sectionId]}}/>
+          <div className="duotone duotone-light" style={{backgroundColor: COLORS[props.sectionId]}}/>
           </div>
           )}
 
           </div>
         </Link>
       ) : (<Grid color={COLORS[props.sectionId]}/>) }
+      {location.pathname === "/guidelines" && (
+        <div className="sectionTitle-container">
+        <h2 className="sectionTitle-title">{TITLES[props.sectionId]}</h2>
+        </div>
+      )}
     </div>
   );
 }

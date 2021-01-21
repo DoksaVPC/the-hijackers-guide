@@ -16,6 +16,12 @@ function Grid(props) {
   const [handlerPos, setHandlerPos] = useState({x: gridWidth/3 * 2 - handlerRadius, y: gridHeight/3*2 - handlerRadius});
   const [movingHandler, setMovingHandler] = useState(false);
 
+  function changeColor(e, color){
+      e.target.style.backgroundColor = color;
+  }
+
+
+
   function toggleGrab(e){
       e.preventDefault();
     if (movingHandler){
@@ -41,7 +47,11 @@ function Grid(props) {
   let location = useLocation();
 
   return (
-    <div className="flex-wrapper" onMouseUp={toggleGrab}>
+    <div className="flex-wrapper" onMouseUp={event => {
+      if(movingHandler){
+        toggleGrab(event);
+      }
+      }}>
       <div
         className="flex-wrapper fadeIn"
         style={{ backgroundColor: props.color, flexDirection: 'column'}}
@@ -72,7 +82,10 @@ function Grid(props) {
             </div>
             <div className="grid-unit" style={{ width: gridWidth - (handlerPos.x + handlerRadius) }} />
           </div>
-          <div className="handler" style={{left: handlerPos.x, top: handlerPos.y}} onMouseDown={toggleGrab}/>
+          <div className="handler" style={{left: handlerPos.x, top: handlerPos.y}}
+           onMouseDown={toggleGrab}
+           onMouseEnter={event => changeColor(event, props.color)}
+           onMouseOut={event => changeColor(event, 'GhostWhite')}/>
         </div>
         <div className="controller-container" style={{height: playerControllerHeight, width: gridWidth}}>
         <div className="controller-slider"/>
