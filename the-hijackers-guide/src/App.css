@@ -253,23 +253,70 @@ video {
   width: 101%;
 }
 
+source {
+  object-fit: cover;
+}
+
 .controller-container {
+  display: flex;
+  align-items: center;
+  position: relative;
   width: 100%;
   background-color: var(--black);
 }
 
-.controller-slider {
-  height: 0.4em;
+.slider-container {
+  align-self: flex-start;
+  width: 100%;
+  cursor: pointer;
+  position: absolute;
+  transition: transform 0.2s;
+}
+
+.slider-padding {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 16px;
+}
+
+.slider-container:hover {
+  transform: scaleY(2);
+}
+.slider-container:hover .controller-handler {
+  transform: scale(2, 1);
+}
+
+.slider-background {
+  width: 100%;
   background-color: grey;
 }
 
+.controller-slider {
+  position: relative;
+  height: 4px;
+  background-color: blue;
+  transition: transform 0.2s;
+}
+
+.controller-handler {
+  background-color: blue;
+  border-radius: 100%;
+  position: absolute;
+  top: -2px;
+  left: 0em;
+  width: 8px;
+  height: 8px;
+  transform: scale(0);
+  transition: transform 0.2s;
+}
+
 .controller-button {
+  cursor: pointer;
   height: 48px;
   width: 48px;
-  background-color: grey;
   margin-top: 5px;
   margin-left: 1em;
-  border-radius: 100%;
 }
 
 @keyframes expand {
