@@ -8,6 +8,7 @@ function Controller(props) {
     "03": "#FFAF14",
     "04": "#3BB8FF"
   };
+  const volumeWidth = 60;
 
   return (
     <div
@@ -23,12 +24,12 @@ function Controller(props) {
         }}
       >
         <div className="slider-padding" />
-        <div className="slider-background">
+        <div className="slider-background" style={{backgroundColor: COLORS[props.sectionId]}}>
           <div
             className="controller-slider"
             style={{
               width: (props.width * props.currentTime) / props.duration,
-              backgroundColor: COLORS[props.sectionId]
+              backgroundColor: 'GhostWhite'
             }}
           >
             <div
@@ -39,18 +40,24 @@ function Controller(props) {
               }}
               style={{
                 left: (props.width * props.currentTime) / props.duration - 4,
-                backgroundColor: COLORS[props.sectionId]
+                backgroundColor: 'GhostWhite'
               }}
             />
           </div>
         </div>
       </div>
-      <div className="controller-button" onClick={props.playVideos}>
+      <button className="controller-button" onClick={props.playVideos}>
         <img
           alt="play"
           style={{ width: "100%" }}
           src="/assets/play_button.svg"
         />
+      </button>
+      <div className='volume-container'>
+      <button className="controller-button" style={{marginRight: '1em', backgroundColor: 'transparent'}}>
+      <img alt="volume" style={{ width: '100%'}} src="/assets/volume_button.svg"/>
+      </button>
+      <div className="volume-slider-background" style={{height: 4, backgroundColor: COLORS[props.sectionId]}}><div className="volume-slider"><div className="volume-handler"/></div></div>
       </div>
     </div>
   );

@@ -28,6 +28,16 @@ html {
   }
 }
 
+button, input[type="submit"], input[type="reset"] {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -240,6 +250,7 @@ html {
 }
 
 .grid-unit {
+  position: relative;
   border: solid var(--background) 1px;
   overflow: hidden;
 }
@@ -249,11 +260,10 @@ html {
 }
 
 video {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   width: 101%;
-}
-
-source {
-  object-fit: cover;
 }
 
 .controller-container {
@@ -312,10 +322,27 @@ source {
 
 .controller-button {
   cursor: pointer;
-  height: 48px;
-  width: 48px;
-  margin-top: 5px;
-  margin-left: 1em;
+  height: 28px;
+  width: 28px;
+  margin-left: 2em;
+}
+
+.volume-container{
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.volume-container:hover .volume-slider-background{
+  width: 60px;
+  opacity: 1;
+  transition: opacity 0.2s, width 0.1s;
+}
+
+.volume-slider-background{
+  width: 0px;
+  opacity: 0;
+  transition: opacity 0.2s, width 0.3s;
 }
 
 @keyframes expand {
