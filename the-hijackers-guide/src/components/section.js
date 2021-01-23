@@ -5,7 +5,7 @@ function Section(props) {
   let location = useLocation();
 
   const COLORS = {
-    "01": "#CD7FF2",
+    "01": "#9F55DD",
     "02": "#1EDA96",
     "03": "#FFAF14",
     "04": "#3BB8FF",

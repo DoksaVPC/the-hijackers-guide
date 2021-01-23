@@ -2,6 +2,13 @@ import { React, useState } from "react";
 
 function Controller(props) {
   const HANDLER_RADIUS = 0;
+  const COLORS = {
+    "01": "#9F55DD",
+    "02": "#1EDA96",
+    "03": "#FFAF14",
+    "04": "#3BB8FF"
+  };
+
   return (
     <div
       className="controller-container"
@@ -20,7 +27,8 @@ function Controller(props) {
           <div
             className="controller-slider"
             style={{
-              width: (props.width * props.currentTime) / props.duration
+              width: (props.width * props.currentTime) / props.duration,
+              backgroundColor: COLORS[props.sectionId]
             }}
           >
             <div
@@ -30,7 +38,8 @@ function Controller(props) {
                 props.setMoving(true);
               }}
               style={{
-                left: (props.width * props.currentTime) / props.duration - 4
+                left: (props.width * props.currentTime) / props.duration - 4,
+                backgroundColor: COLORS[props.sectionId]
               }}
             />
           </div>

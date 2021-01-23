@@ -216,7 +216,6 @@ html {
 .handler:active {
   transition: transform 0s;
   transform: scale(1.15);
-  border-color: var(--black);
   cursor: grabbing;
 }
 
@@ -289,7 +288,7 @@ source {
 
 .slider-background {
   width: 100%;
-  background-color: grey;
+  background-color: rgb(80, 80, 80);
 }
 
 .controller-slider {

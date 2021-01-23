@@ -187,7 +187,8 @@ function Grid(props) {
           id="grid"
           style={{
             width: gridWidth,
-            height: gridHeight
+            height: gridHeight,
+            borderWidth: 0
           }}
         >
           <div
@@ -196,7 +197,11 @@ function Grid(props) {
           >
             <div
               className="grid-unit"
-              style={{ width: handlerPos.x + handlerRadius }}
+              style={{
+                width: handlerPos.x + handlerRadius,
+                borderTopWidth: 0,
+                borderLeftWidth: 0
+              }}
             >
               <video
                 style={{ minWidth: (gridWidth / 3) * 2 }}
@@ -220,9 +225,15 @@ function Grid(props) {
             </div>
             <div
               className="double-container vertical"
-              style={{ width: gridWidth - (handlerPos.x + handlerRadius) }}
+              style={{
+                width: gridWidth - (handlerPos.x + handlerRadius),
+                borderTopWidth: 0
+              }}
             >
-              <div className="grid-unit half">
+              <div
+                className="grid-unit half"
+                style={{ borderTopWidth: 0, borderRightWidth: 0 }}
+              >
                 <video ref={video2} currentTime={videoCurrentTime}>
                   <source
                     src={
@@ -235,7 +246,7 @@ function Grid(props) {
                   />
                 </video>
               </div>
-              <div className="grid-unit half">
+              <div className="grid-unit half" style={{ borderRightWidth: 0 }}>
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                   <video ref={video3}>
                     <source
@@ -263,7 +274,10 @@ function Grid(props) {
               className="double-container horizontal"
               style={{ width: handlerPos.x + handlerRadius }}
             >
-              <div className="grid-unit half">
+              <div
+                className="grid-unit half"
+                style={{ borderBottomWidth: 0, borderLeftWidth: 0 }}
+              >
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                   <video ref={video4}>
                     <source
@@ -278,7 +292,7 @@ function Grid(props) {
                   </video>
                 )}
               </div>
-              <div className="grid-unit half">
+              <div className="grid-unit half" style={{ borderBottomWidth: 0 }}>
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                   <video ref={video5}>
                     <source
@@ -296,7 +310,11 @@ function Grid(props) {
             </div>
             <div
               className="grid-unit"
-              style={{ width: gridWidth - (handlerPos.x + handlerRadius) }}
+              style={{
+                width: gridWidth - (handlerPos.x + handlerRadius),
+                borderBottomWidth: 0,
+                borderRightWidth: 0
+              }}
             >
               {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                 <video ref={video6}>
