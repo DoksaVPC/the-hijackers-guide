@@ -16,7 +16,7 @@ function Grid(props) {
     "04": 0
   };
 
-  let playerControllerHeight = 68;
+  let playerControllerHeight = 56;
   let gridWidth = ((WindowSize.y - playerControllerHeight) / 9) * 16;
   let gridHeight = WindowSize.y - playerControllerHeight;
   let gridLeft = -1;
@@ -30,8 +30,10 @@ function Grid(props) {
   const [movingHandler, setMovingHandler] = useState(false);
   const [movingControllerHandler, setMovingControllerHandler] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [neverPlayed, setNeverPlayed] = useState(true);
   const [videoCurrentTime, setCurrentTime] = useState(0);
   const [videoDuration, setVideoDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
 
   const video1 = useRef(null);
   const video2 = useRef(null);
@@ -110,6 +112,9 @@ function Grid(props) {
   }
 
   let playVideos = function() {
+    if (neverPlayed) {
+      setNeverPlayed(false);
+    }
     if (!isPlaying) {
       for (let i = 0; i < videoRefs.length; i++) {
         if (videoRefs[i] !== null) {
@@ -133,6 +138,9 @@ function Grid(props) {
     }
     if (videoCurrentTime >= UNLOCK_TIME[props.sectionId] && isLocked) {
       setLocked(false);
+    }
+    if (video1.current.volume !== volume) {
+      video1.current.volume = volume;
     }
   }
 
@@ -222,6 +230,18 @@ function Grid(props) {
                   }
                 />
               </video>
+              {neverPlayed && (
+                <div
+                  className="play-button-large-container"
+                  onClick={() => {
+                    playVideos();
+                  }}
+                >
+                  <div className="play-button-large">
+                    <img alt="play" src="/assets/play_button.svg" />
+                  </div>
+                </div>
+              )}
             </div>
             <div
               className="double-container vertical"
@@ -365,6 +385,9 @@ function Grid(props) {
           playVideos={playVideos}
           handleClick={clickOnSlider}
           setMoving={setMovingControllerHandler}
+          setVolume={setVolume}
+          volume={volume}
+          isPlaying={isPlaying}
         />
       </div>
     </div>
