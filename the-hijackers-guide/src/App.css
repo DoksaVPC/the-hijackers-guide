@@ -40,6 +40,16 @@ input[type="reset"] {
   outline: inherit;
 }
 
+a{
+  color: var(--black);
+}
+
+hr{
+  width: 50%;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -69,7 +79,7 @@ input[type="reset"] {
   height: 100vh;
   top: 0;
   left: 0;
-  padding: 20px;
+  padding: 1.2em;
   pointer-events: none;
   z-index: 999;
 }
@@ -77,9 +87,9 @@ input[type="reset"] {
 .nav-button {
   display: flex;
   pointer-events: auto;
-  width: 64px;
-  margin-bottom: 20px;
-  height: 64px;
+  width: 4em;
+  margin-bottom: 1em;
+  height: 4em;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -97,7 +107,7 @@ input[type="reset"] {
 
 .nav-button div {
   position: absolute;
-  font-size: 9pt;
+  font-size: 0.7em;
   font-weight: 600;
   text-align: center;
   color: black;
@@ -416,4 +426,89 @@ input[type="reset"] {
   to {
     width: 100%;
   }
+}
+
+.about-container{
+  color: var(--black);
+  overflow-x: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  padding-left: 6.4em;
+}
+
+.about-header-container{
+  width: 100%;
+  padding-left: 6.4em;
+  color: var(--background);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.about-header{
+  width: 100%;
+  background-color: var(--black);
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
+
+.about-header h1{
+  margin:0;
+  text-align: left;
+  font-size: 1.6em;
+  padding-right: 6.4em;
+  padding-left: calc(10% + 1rem);
+}
+
+.wrapper{
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 6em;
+  border-left: 1px grey solid
+}
+
+.wrapper h3{
+  font-size: 1.5em;
+  line-height: 1.3em;
+  font-weight: normal;
+  text-align: left;
+  padding: 1rem;
+}
+
+.column-container{
+  display: flex;
+}
+
+.column{
+  text-align: left;
+  line-height: 1.6em;
+  width: 50%;
+  padding: 1rem;
+}
+
+.phase2-title{
+  font-family: 'Trispace', sans-serif;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  color: var(--background);
+  font-weight: 700;
+}
+
+.phase2-title h3{
+  line-height: 1em;
+  margin: 0;
+  padding: 1em 1em ;
+  font-size: 1.5em;
+}
+
+.phase2-title h4{
+  line-height: 1.3em;
+  margin: 0;
+  padding: 0;
+  margin-top: 1.5em;
+  font-size: 0.8em;
 }
