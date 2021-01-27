@@ -35,8 +35,9 @@ function AboutHover(props) {
           zIndex: 2
         }}
       >
-        <u style={{ color: "white" }}>{props.text}</u>
       </div>
+      <u style={{ color: "white", position:'absolute', opacity: contentOpacity,
+      transition: "opacity 0.2s", zIndex: 2}}>{props.text}</u>
     </div>
   );
 }

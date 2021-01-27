@@ -40,8 +40,12 @@ input[type="reset"] {
   outline: inherit;
 }
 
-ul {
-  list-style-type: none;
+ul,
+li {
+  margin:0;
+   padding: 0;
+   text-indent: 0;
+   list-style-type: 0;
 }
 
 a {
@@ -52,6 +56,11 @@ hr {
   width: 50%;
   margin-top: 2em;
   margin-bottom: 2em;
+}
+
+p{
+  line-height: 1.6em;
+  text-align: left;
 }
 
 .App-header {
@@ -434,12 +443,13 @@ hr {
 
 .about-container {
   color: var(--black);
-  overflow-x: hidden;
+  overflow: hidden;
   display: flex;
   align-items: stretch;
   justify-content: center;
   width: 100%;
   padding-left: 6.4em;
+
 }
 
 .about-header-container {
@@ -464,13 +474,13 @@ hr {
   text-align: left;
   font-size: 1.6em;
   padding-right: 6.4em;
-  padding-left: calc(15% + 1rem);
+  padding-left: calc(12% + 1rem);
 }
 
 .wrapper {
   width: 100%;
-  padding-left: 15%;
-  padding-right: 15%;
+  padding-left: 12%;
+  padding-right: 12%;
   border-left: 1px grey solid;
 }
 
@@ -530,6 +540,7 @@ hr {
   position: fixed;
   top: 10em;
   left: 0em;
+  margin: 0.2em 1.4em;
 }
 
 .anchors-container ul {
@@ -543,9 +554,35 @@ hr {
   width: 5em;
   height: 5em;
   margin-top: 1em;
-  font-size: 0.6em;
+  font-size: 0.7em;
   border-radius: 100%;
   background-color: var(--black);
   color: var(--background);
   text-align: center;
+}
+
+.flex-list{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.flex-paragraph{
+  text-align: left;
+  width: 48%;
+  display: flex;
+  font-size: 1.2em;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.number{
+  display: inline;
+  font-size: 1.2em;
+  font-weight: 400;
+  padding: 0.1em 0.3em;
+  margin-right: 0.8em;
+  border: 1px var(--black) solid;
 }
