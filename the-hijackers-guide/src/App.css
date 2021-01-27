@@ -40,11 +40,15 @@ input[type="reset"] {
   outline: inherit;
 }
 
-a{
+ul {
+  list-style-type: none;
+}
+
+a {
   color: var(--black);
 }
 
-hr{
+hr {
   width: 50%;
   margin-top: 2em;
   margin-bottom: 2em;
@@ -428,7 +432,7 @@ hr{
   }
 }
 
-.about-container{
+.about-container {
   color: var(--black);
   overflow-x: hidden;
   display: flex;
@@ -438,39 +442,44 @@ hr{
   padding-left: 6.4em;
 }
 
-.about-header-container{
+.about-header-container {
   width: 100%;
   padding-left: 6.4em;
   color: var(--background);
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 
-.about-header{
+.about-header {
   width: 100%;
   background-color: var(--black);
   padding-top: 0.8em;
   padding-bottom: 0.8em;
 }
 
-.about-header h1{
-  margin:0;
+.about-header h1 {
+  margin: 0;
   text-align: left;
   font-size: 1.6em;
   padding-right: 6.4em;
-  padding-left: calc(10% + 1rem);
+  padding-left: calc(15% + 1rem);
 }
 
-.wrapper{
+.wrapper {
   width: 100%;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 6em;
-  border-left: 1px grey solid
+  padding-left: 15%;
+  padding-right: 15%;
+  border-left: 1px grey solid;
 }
 
-.wrapper h3{
+.wrapper > h3 {
+  margin-top: 5em;
+}
+
+.wrapper h3 {
+  position: relative;
   font-size: 1.5em;
   line-height: 1.3em;
   font-weight: normal;
@@ -478,37 +487,65 @@ hr{
   padding: 1rem;
 }
 
-.column-container{
+.column-container {
   display: flex;
 }
 
-.column{
+.column {
   text-align: left;
   line-height: 1.6em;
   width: 50%;
   padding: 1rem;
 }
 
-.phase2-title{
-  font-family: 'Trispace', sans-serif;
+.phase2-title {
+  font-family: "Trispace", sans-serif;
   position: absolute;
   top: 0px;
   left: 0px;
   color: var(--background);
   font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
-.phase2-title h3{
+.phase2-title h3 {
   line-height: 1em;
-  margin: 0;
-  padding: 1em 1em ;
-  font-size: 1.5em;
-}
-
-.phase2-title h4{
-  line-height: 1.3em;
+  font-size: 1.8em;
   margin: 0;
   padding: 0;
-  margin-top: 1.5em;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 10%;
+}
+
+.phase2-title h4 {
+  line-height: 1.3em;
   font-size: 0.8em;
+  margin: 0;
+  padding: 5% 5%;
+}
+
+.anchors-container {
+  position: fixed;
+  top: 10em;
+  left: 0em;
+}
+
+.anchors-container ul {
+  margin: 0px 0px;
+}
+
+.anchors-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5em;
+  height: 5em;
+  margin-top: 1em;
+  font-size: 0.6em;
+  border-radius: 100%;
+  background-color: var(--black);
+  color: var(--background);
+  text-align: center;
 }
