@@ -1,15 +1,24 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Onboarding(){
+function Onboarding() {
   return (
-    <div>
-    <h1> Welcome! </h1>
-    <Link to="/guidelines">
-    <h3>Start the experience!</h3>
-    </Link>
+    <div class="onboarding-wrapper">
+      <h3>
+        Hashtag hijacking typically refers to a situation in which a hashtag
+        becomes commandeered by others in the community and is then instead used
+        to mock, satirize or negatively critique the original hashtag sponsor
+        Nowadays, it is a powerful tool of digital activism and it represents a
+        new way of standing up for certain causes exploiting the power of
+        collective actions. A single hashtag hijacked event can involve
+        thousands of people and each contribution is essential to drown out the
+        feed.
+        <br />
+        <br />
+        <Link to="/guidelines">Begin the experience</Link> to get a complete
+        view of the phenomenon and how to take part in it.
+      </h3>
     </div>
   );
-
 }
 
 export default Onboarding;

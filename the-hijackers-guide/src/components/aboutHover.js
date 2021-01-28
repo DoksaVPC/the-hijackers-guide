@@ -24,8 +24,8 @@ function AboutHover(props) {
           justifyContent: "center",
           alignItems: "center",
           position: "absolute",
-          width: "25vw",
-          height: "14vw",
+          width: (props.width || 22) + "em",
+          height: ((props.width || 22) * 9) / 16 + "em",
           backgroundColor: "rgb(120, 120, 120)",
           pointerEvents: "none",
           transform: "scale(" + contentOpacity + ")",
@@ -34,10 +34,18 @@ function AboutHover(props) {
           borderRadius: "0.3em",
           zIndex: 2
         }}
+      ></div>
+      <u
+        style={{
+          color: "white",
+          position: "absolute",
+          opacity: contentOpacity,
+          transition: "opacity 0.2s",
+          zIndex: 2
+        }}
       >
-      </div>
-      <u style={{ color: "white", position:'absolute', opacity: contentOpacity,
-      transition: "opacity 0.2s", zIndex: 2}}>{props.text}</u>
+        {props.text}
+      </u>
     </div>
   );
 }
