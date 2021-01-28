@@ -1,6 +1,7 @@
 :root {
   --background: GhostWhite;
   --black: #1c1c1c;
+  --grey: #bababa;
 }
 
 html {
@@ -132,6 +133,8 @@ footer {
   color: black;
 }
 
+/*////////////////////////// home */
+
 .flex-wrapper {
   overflow-x: hidden;
   display: flex;
@@ -221,6 +224,8 @@ footer {
   animation-fill-mode: forwards;
 }
 
+/*//////////////////////////// grid */
+
 .grid {
   position: relative;
   display: flex;
@@ -287,6 +292,106 @@ footer {
   right: 0;
   width: 101%;
 }
+
+.content-container{
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+  align-items: stretch;
+  position: absolute;
+}
+
+.bottom-left{
+  bottom: 0px;
+  left: 0px;
+}
+
+.bottom-right{
+  bottom: 0px;
+  right: 0px;
+}
+
+.card{
+  background-color: var(--background);
+  height: auto;
+  border-radius: 0.5em;
+}
+
+.data-card{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header{
+  width: 100%;
+  color: var(--black);
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0px;
+  padding: 0.5em 1em;
+  border-bottom: 1px var(--grey) solid;
+}
+
+.card h5{
+  line-height: 1em;
+  font-weight: 700;
+  font-size: 1em;
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 0.25rem;
+  color: black;
+}
+
+.card-label{
+  display: inline-block;
+  border-radius: 0.25em;
+  color: var(--background);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.6em;
+  padding: 0.5em 0.8em;
+}
+
+.card-info{
+  display: flex;
+  flex-basis: 25%;
+  flex-grow: 1;
+}
+
+.card-info-column{
+  display: flex;
+  flex-direction: column;
+  flex-basis: 25%;
+  padding: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-info-icon{
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  margin-bottom: 0.1rem;
+  background-color: var(--grey);
+}
+
+.card-info-label{
+  color: var(--black);
+  font-size: 0.8em;
+}
+
+.card-info-column p {
+  margin: 0;
+  padding: 0;
+  margin-top: 0.1rem;
+  font-weight: 700;
+  font-size: 0.8em;
+}
+
+/*//////////////////////////////////// controller */
 
 .play-button-large-container {
   cursor: pointer;
@@ -447,6 +552,8 @@ footer {
   }
 }
 
+/*////////////////////////// about */
+
 .about-container {
   color: var(--black);
   overflow: hidden;
@@ -505,9 +612,18 @@ footer {
 
 .column {
   text-align: left;
-  line-height: 1.6em;
   width: 50%;
   padding: 1rem;
+}
+
+.card-column{
+  padding: 1rem 0.8em;
+  font-size: 0.85em;
+  color: var(--black);
+}
+
+.column p {
+  line-height: 1.6em;
 }
 
 .phase2-title {

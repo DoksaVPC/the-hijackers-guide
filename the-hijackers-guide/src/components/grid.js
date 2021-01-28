@@ -1,5 +1,6 @@
 import { React, useState, useRef, useEffect } from "react";
 import Controller from "../components/controller";
+import DataCard from "../components/dataCard";
 import Lottie from "react-lottie";
 import lockAnimation from "../lottie/lock_animation.json";
 
@@ -15,6 +16,22 @@ function Grid(props) {
     "03": 0,
     "04": 0
   };
+
+  const CARD_DATA = {
+    '01': {
+      title: '#WHITELIVESMATTER',
+      originalDate: '2020-06-02',
+      hijackDate: '2020-06-03',
+      originalUsers: 'White supremacists',
+      hijackUsers: 'K-pop stans',
+      originalAim: 'Support white supremacy',
+      hijackAim: 'Support BLM movement',
+      postCount: '> 94.200',
+      platforms: 'Twitter',
+      timeRange: '1 day',
+      tactic: 'flooding'
+    }
+  }
 
   let playerControllerHeight = 56;
   let gridWidth = ((WindowSize.y - playerControllerHeight) / 9) * 16;
@@ -311,6 +328,22 @@ function Grid(props) {
                     />
                   </video>
                 )}
+                <div className="content-container bottom-left" style={{width: gridWidth/3, height: gridHeight/3 * 2}}>
+                <DataCard
+                color={props.color}
+                hashtagName={CARD_DATA[props.sectionId].title}
+                originalDate={CARD_DATA[props.sectionId].originalDate}
+                hijackDate={CARD_DATA[props.sectionId].hijackDate}
+                originalUsers={CARD_DATA[props.sectionId].originalUsers}
+                hijackUsers={CARD_DATA[props.sectionId].hijackUsers}
+                originalAim={CARD_DATA[props.sectionId].originalAim}
+                hijackAim={CARD_DATA[props.sectionId].hijackAim}
+                postCount= {CARD_DATA[props.sectionId].postCount}
+                platforms= {CARD_DATA[props.sectionId].platforms}
+                timeRange= {CARD_DATA[props.sectionId].timeRange}
+                tactic= {CARD_DATA[props.sectionId].tactic}
+                />
+                </div>
               </div>
               <div className="grid-unit half" style={{ borderBottomWidth: 0 }}>
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
@@ -349,6 +382,8 @@ function Grid(props) {
                   />
                 </video>
               )}
+              <div className="content-container bottom-right" style={{width: gridWidth/3 * 2, height: gridHeight/3 * 2}}>
+              </div>
             </div>
           </div>
           <div
