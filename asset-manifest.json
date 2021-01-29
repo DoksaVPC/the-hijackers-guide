@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/the-hijackers-guide/static/css/main.9e30adbf.chunk.css",
-    "main.js": "/the-hijackers-guide/static/js/main.7efdae90.chunk.js",
-    "main.js.map": "/the-hijackers-guide/static/js/main.7efdae90.chunk.js.map",
+    "main.js": "/the-hijackers-guide/static/js/main.d6c836a3.chunk.js",
+    "main.js.map": "/the-hijackers-guide/static/js/main.d6c836a3.chunk.js.map",
     "runtime-main.js": "/the-hijackers-guide/static/js/runtime-main.a972c062.js",
     "runtime-main.js.map": "/the-hijackers-guide/static/js/runtime-main.a972c062.js.map",
-    "static/js/2.43c0f01d.chunk.js": "/the-hijackers-guide/static/js/2.43c0f01d.chunk.js",
-    "static/js/2.43c0f01d.chunk.js.map": "/the-hijackers-guide/static/js/2.43c0f01d.chunk.js.map",
+    "static/js/2.407d71ff.chunk.js": "/the-hijackers-guide/static/js/2.407d71ff.chunk.js",
+    "static/js/2.407d71ff.chunk.js.map": "/the-hijackers-guide/static/js/2.407d71ff.chunk.js.map",
     "static/js/3.4c4cfa2e.chunk.js": "/the-hijackers-guide/static/js/3.4c4cfa2e.chunk.js",
     "static/js/3.4c4cfa2e.chunk.js.map": "/the-hijackers-guide/static/js/3.4c4cfa2e.chunk.js.map",
     "index.html": "/the-hijackers-guide/index.html",
     "static/css/main.9e30adbf.chunk.css.map": "/the-hijackers-guide/static/css/main.9e30adbf.chunk.css.map",
-    "static/js/2.43c0f01d.chunk.js.LICENSE.txt": "/the-hijackers-guide/static/js/2.43c0f01d.chunk.js.LICENSE.txt",
+    "static/js/2.407d71ff.chunk.js.LICENSE.txt": "/the-hijackers-guide/static/js/2.407d71ff.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/the-hijackers-guide/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a972c062.js",
-    "static/js/2.43c0f01d.chunk.js",
+    "static/js/2.407d71ff.chunk.js",
     "static/css/main.9e30adbf.chunk.css",
-    "static/js/main.7efdae90.chunk.js"
+    "static/js/main.d6c836a3.chunk.js"
   ]
 }
