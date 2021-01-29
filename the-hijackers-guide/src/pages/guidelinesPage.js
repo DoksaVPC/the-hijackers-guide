@@ -14,7 +14,7 @@ function GuidelinesPage() {
 
       <Section sectionId="04" />
 
-      {location.pathname === "/the-hijackers-guide/guidelines" && (
+      {location.pathname === "/guidelines" && (
         <h1>
           {" "}
           The Hijacker's Guide <br /> to Digital Activism{" "}

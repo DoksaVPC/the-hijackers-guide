@@ -15,12 +15,9 @@ function App() {
     <div className="App">
       {location.pathname !== "/" && <Nav />}
       <Switch location={background || location}>
-        <Route exact path="/the-hijackers-guide/" children={<Onboarding />} />
-        <Route
-          path="/the-hijackers-guide/guidelines"
-          children={<GuidelinesPage />}
-        />
-        <Route path="/the-hijackers-guide/about" children={<About />} />
+        <Route exact path="/" children={<Onboarding />} />
+        <Route path="/guidelines" children={<GuidelinesPage />} />
+        <Route path="/about" children={<About />} />
       </Switch>
     </div>
   );
