@@ -26,6 +26,8 @@ function Section(props) {
     "04": "Effective tactic"
   };
 
+
+
   return (
     <div
       className="guidelines-section"
@@ -48,7 +50,7 @@ function Section(props) {
                   onMouseOut={event => event.target.pause()}
                 >
                   <source
-                    src={"./assets/preview-" + props.sectionId + ".mp4"}
+                    src={process.env.PUBLIC_URL + "/assets/preview-" + props.sectionId + ".mp4"}
                   />
                 </video>
                 <div

@@ -162,7 +162,7 @@ function Controller(props) {
             }
           }}
         >
-          <img alt="volume" src="/assets/volume_button.svg" />
+          <img alt="volume" src={process.env.PUBLIC_URL + "/assets/volume_button.svg"} />
         </button>
         <div
           className="volume-slider-container"

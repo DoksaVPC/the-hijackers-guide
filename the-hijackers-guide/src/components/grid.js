@@ -277,7 +277,7 @@ function Grid(props) {
                 }}
               >
                 <source
-                  src={
+                  src={process.env.PUBLIC_URL +
                     "/assets/section" +
                     props.sectionId +
                     "/Video" +
@@ -294,7 +294,7 @@ function Grid(props) {
                   }}
                 >
                   <div className="play-button-large">
-                    <img alt="play" src="/assets/play_button.svg" />
+                    <img alt="play" src={process.env.PUBLIC_URL + "/assets/play_button.svg"} />
                   </div>
                 </div>
               )}
@@ -312,7 +312,7 @@ function Grid(props) {
               >
                 <video ref={video2} currentTime={videoCurrentTime}>
                   <source
-                    src={
+                    src={process.env.PUBLIC_URL +
                       "/assets/section" +
                       props.sectionId +
                       "/Video" +
@@ -326,7 +326,7 @@ function Grid(props) {
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                   <video ref={video3}>
                     <source
-                      src={
+                      src={process.env.PUBLIC_URL +
                         "/assets/section" +
                         props.sectionId +
                         "/Video" +
@@ -357,7 +357,7 @@ function Grid(props) {
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                   <video ref={video4}>
                     <source
-                      src={
+                      src={process.env.PUBLIC_URL +
                         "/assets/section" +
                         props.sectionId +
                         "/Video" +
@@ -391,7 +391,7 @@ function Grid(props) {
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                   <video ref={video5}>
                     <source
-                      src={
+                      src={process.env.PUBLIC_URL +
                         "/assets/section" +
                         props.sectionId +
                         "/Video" +
@@ -414,7 +414,7 @@ function Grid(props) {
               {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                 <video ref={video6}>
                   <source
-                    src={
+                    src={process.env.PUBLIC_URL +
                       "/assets/section" +
                       props.sectionId +
                       "/Video" +
@@ -450,7 +450,14 @@ function Grid(props) {
               }}
             >
               <Lottie
-                options={lockOptions}
+              options={{
+                loop: false,
+                autoplay: false,
+                animationData: lockAnimation,
+                rendererSettings: {
+                  preserveAspectRatio: "xMidYMid slice"
+                }
+              }}
                 height={72}
                 width={72}
                 isStopped={isLocked}

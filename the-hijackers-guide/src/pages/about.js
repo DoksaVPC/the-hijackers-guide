@@ -87,7 +87,7 @@ function About() {
                   autoPlay
                   loop
                 >
-                  <source src="/assets/about/disclosure_intro.mp4" />{" "}
+                  <source src={process.env.PUBLIC_URL + "/assets/about/disclosure_intro.mp4"} />{" "}
                 </video>
                 The K-pop fandoms hijacked many hashtags: <br />
                 <AboutHover text="#StandWithTuckerCarlson" />,{" "}
@@ -148,7 +148,7 @@ function About() {
                     autoPlay
                     loop
                   >
-                    <source src="/assets/about/cover-phase2.mp4" />
+                    <source src={process.env.PUBLIC_URL + "/assets/about/cover-phase2.mp4"} />
                   </video>
                   <div
                     className="phase2-title"
