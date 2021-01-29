@@ -26,22 +26,24 @@ function Section(props) {
     "04": "Effective tactic"
   };
 
-
-
   return (
     <div
       className="guidelines-section"
       style={{
         backgroundColor: COLORS[props.sectionId],
-        ...(location.pathname === "/guidelines/guideline-" + props.sectionId
+        ...(location.pathname ===
+        "/the-hijackers-guide/guidelines/guideline-" + props.sectionId
           ? { width: "100%" }
           : {})
       }}
     >
-      {location.pathname !== "/guidelines/guideline-" + props.sectionId ? (
-        <Link to={"/guidelines/guideline-" + props.sectionId}>
+      {location.pathname !==
+      "/the-hijackers-guide/guidelines/guideline-" + props.sectionId ? (
+        <Link
+          to={"/the-hijackers-guide/guidelines/guideline-" + props.sectionId}
+        >
           <div className="preview-video-container">
-            {location.pathname === "/guidelines" && (
+            {location.pathname === "/the-hijackers-guide/guidelines" && (
               <div>
                 <video
                   loop
@@ -50,7 +52,12 @@ function Section(props) {
                   onMouseOut={event => event.target.pause()}
                 >
                   <source
-                    src={process.env.PUBLIC_URL + "/assets/preview-" + props.sectionId + ".mp4"}
+                    src={
+                      process.env.PUBLIC_URL +
+                      "/assets/preview-" +
+                      props.sectionId +
+                      ".mp4"
+                    }
                   />
                 </video>
                 <div
@@ -68,12 +75,13 @@ function Section(props) {
       ) : (
         <Grid color={COLORS[props.sectionId]} sectionId={props.sectionId} />
       )}
-      {location.pathname !== "/guidelines/guideline-" + props.sectionId && (
+      {location.pathname !==
+        "/the-hijackers-guide/guidelines/guideline-" + props.sectionId && (
         <div className="sectionTitle-container">
           <h2
             className="sectionTitle-title"
             style={
-              location.pathname !== "/guidelines"
+              location.pathname !== "/the-hijackers-guide/guidelines"
                 ? {
                     textOrientation: "mixed",
                     writingMode: "vertical-lr",
