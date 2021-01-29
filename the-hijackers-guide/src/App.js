@@ -19,7 +19,6 @@ function App() {
         <Route path="/guidelines" children={<GuidelinesPage />} />
         <Route path="/disclosure" children={<About />} />
       </Switch>
-      {background && <Route path="/guideline/:id" children={<Guideline />} />}
     </div>
   );
 }

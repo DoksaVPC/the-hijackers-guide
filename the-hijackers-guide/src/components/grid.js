@@ -18,20 +18,59 @@ function Grid(props) {
   };
 
   const CARD_DATA = {
-    '01': {
-      title: '#WHITELIVESMATTER',
-      originalDate: '2020-06-02',
-      hijackDate: '2020-06-03',
-      originalUsers: 'White supremacists',
-      hijackUsers: 'K-pop stans',
-      originalAim: 'Support white supremacy',
-      hijackAim: 'Support BLM movement',
-      postCount: '> 94.200',
-      platforms: 'Twitter',
-      timeRange: '1 day',
-      tactic: 'flooding'
+    "01": {
+      title: "#WHITELIVESMATTER",
+      originalDate: "2020-06-02",
+      hijackDate: "2020-06-03",
+      originalUsers: "White supremacists",
+      hijackUsers: "K-pop stans",
+      originalAim: "Support white supremacy",
+      hijackAim: "Support BLM movement",
+      postCount: "> 94.200",
+      platforms: "Twitter",
+      timeRange: "1 day",
+      tactic: "Flooding"
+    },
+    "02": {
+      title: "#ProudBoys",
+      originalDate: "2020-10-01",
+      hijackDate: "2020-10-02",
+      originalUsers: "Donald Trump supporters",
+      hijackUsers: "LGBTQ+ community",
+      originalAim: "Support the Proud Boys political group",
+      hijackAim: "Support LGBTQ+ Community",
+      postCount: "Unknown",
+      platforms: "Twitter Instagram TikTok",
+      timeRange: "1 day",
+      tactic: "Flipping"
+    },
+    "03": {
+      title: "#WHITELIVESMATTER",
+      originalDate: "2020-06-02",
+      hijackDate: "2020-06-03",
+      originalUsers: "White supremacists",
+      hijackUsers: "K-pop stans",
+      originalAim: "Support white supremacy",
+      hijackAim: "Support BLM movement",
+      postCount: "> 94.200",
+      platforms: "Twitter",
+      timeRange: "1 day",
+      tactic: "Flooding"
+    },
+    "04": {
+      title: "#WHITELIVESMATTER",
+      originalDate: "2020-06-02",
+      hijackDate: "2020-06-03",
+      originalUsers: "White supremacists",
+      hijackUsers: "K-pop stans",
+      originalAim: "Support white supremacy",
+      hijackAim: "Support BLM movement",
+      postCount: "> 94.200",
+      platforms: "Twitter",
+      timeRange: "1 day",
+      tactic: "Flooding"
     }
-  }
+  };
 
   let playerControllerHeight = 56;
   let gridWidth = ((WindowSize.y - playerControllerHeight) / 9) * 16;
@@ -328,21 +367,24 @@ function Grid(props) {
                     />
                   </video>
                 )}
-                <div className="content-container bottom-left" style={{width: gridWidth/3, height: gridHeight/3 * 2}}>
-                <DataCard
-                color={props.color}
-                hashtagName={CARD_DATA[props.sectionId].title}
-                originalDate={CARD_DATA[props.sectionId].originalDate}
-                hijackDate={CARD_DATA[props.sectionId].hijackDate}
-                originalUsers={CARD_DATA[props.sectionId].originalUsers}
-                hijackUsers={CARD_DATA[props.sectionId].hijackUsers}
-                originalAim={CARD_DATA[props.sectionId].originalAim}
-                hijackAim={CARD_DATA[props.sectionId].hijackAim}
-                postCount= {CARD_DATA[props.sectionId].postCount}
-                platforms= {CARD_DATA[props.sectionId].platforms}
-                timeRange= {CARD_DATA[props.sectionId].timeRange}
-                tactic= {CARD_DATA[props.sectionId].tactic}
-                />
+                <div
+                  className="content-container bottom-left"
+                  style={{ width: gridWidth / 3, height: (gridHeight / 3) * 2 }}
+                >
+                  <DataCard
+                    color={props.color}
+                    hashtagName={CARD_DATA[props.sectionId].title}
+                    originalDate={CARD_DATA[props.sectionId].originalDate}
+                    hijackDate={CARD_DATA[props.sectionId].hijackDate}
+                    originalUsers={CARD_DATA[props.sectionId].originalUsers}
+                    hijackUsers={CARD_DATA[props.sectionId].hijackUsers}
+                    originalAim={CARD_DATA[props.sectionId].originalAim}
+                    hijackAim={CARD_DATA[props.sectionId].hijackAim}
+                    postCount={CARD_DATA[props.sectionId].postCount}
+                    platforms={CARD_DATA[props.sectionId].platforms}
+                    timeRange={CARD_DATA[props.sectionId].timeRange}
+                    tactic={CARD_DATA[props.sectionId].tactic}
+                  />
                 </div>
               </div>
               <div className="grid-unit half" style={{ borderBottomWidth: 0 }}>
@@ -382,8 +424,13 @@ function Grid(props) {
                   />
                 </video>
               )}
-              <div className="content-container bottom-right" style={{width: gridWidth/3 * 2, height: gridHeight/3 * 2}}>
-              </div>
+              <div
+                className="content-container bottom-right"
+                style={{
+                  width: (gridWidth / 3) * 2,
+                  height: (gridHeight / 3) * 2
+                }}
+              ></div>
             </div>
           </div>
           <div
