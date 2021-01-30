@@ -299,6 +299,7 @@ footer {
   justify-content: center;
   align-items: stretch;
   position: absolute;
+  overflow: hidden;
 }
 
 .bottom-left {
@@ -315,6 +316,11 @@ footer {
   background-color: var(--background);
   height: auto;
   border-radius: 0.5em;
+}
+
+.image-card{
+  position: relative;
+  transition: transform 0.2s;
 }
 
 .data-card {
@@ -406,6 +412,23 @@ footer {
   margin-top: 0.5em;
   font-weight: 700;
   font-size: 0.8em;
+}
+
+.carousel-arrow {
+  align-self: center;
+  position: absolute;
+  width: 2em;
+  height: 2em;
+}
+
+.left-arrow{
+  left: 0;
+  background-image: url("./left_arrow.svg");
+}
+
+.right-arrow{
+  right: 0;
+  background-image: url("./right_arrow.svg");
 }
 
 /*//////////////////////////////////// controller */

@@ -1,6 +1,7 @@
 import { React, useState, useRef, useEffect } from "react";
 import Controller from "../components/controller";
 import DataCard from "../components/dataCard";
+import Carousel from "../components/carousel";
 import Lottie from "react-lottie";
 import lockAnimation from "../lottie/lock_animation.json";
 
@@ -430,7 +431,7 @@ function Grid(props) {
                   width: (gridWidth / 3) * 2,
                   height: (gridHeight / 3) * 2
                 }}
-              ></div>
+              > <Carousel sectionId={props.sectionId} width={(gridWidth / 3) * 2} height={(gridHeight / 3) * 2}/></div>
             </div>
           </div>
           <div
