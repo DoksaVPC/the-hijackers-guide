@@ -295,7 +295,6 @@ footer {
 
 .content-container {
   display: flex;
-  padding: 1em;
   justify-content: center;
   align-items: stretch;
   position: absolute;
@@ -305,6 +304,7 @@ footer {
 .bottom-left {
   bottom: 0px;
   left: 0px;
+  padding: 1em;
 }
 
 .bottom-right {
@@ -318,7 +318,7 @@ footer {
   border-radius: 0.5em;
 }
 
-.image-card{
+.image-card {
   position: relative;
   transition: transform 0.2s;
 }
@@ -414,6 +414,44 @@ footer {
   font-size: 0.8em;
 }
 
+.carousel-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-images-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin-left: 1em;
+  margin-right: 1em;
+  border-radius: 0.5em;
+}
+
+.image-wrapper img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.carousel-item {
+  border-radius: 1em;
+}
+
 .carousel-arrow {
   align-self: center;
   position: absolute;
@@ -421,13 +459,13 @@ footer {
   height: 2em;
 }
 
-.left-arrow{
-  left: 0;
+.left-arrow {
+  left: 1em;
   background-image: url("./left_arrow.svg");
 }
 
-.right-arrow{
-  right: 0;
+.right-arrow {
+  right: 1em;
   background-image: url("./right_arrow.svg");
 }
 

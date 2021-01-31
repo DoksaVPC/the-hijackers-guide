@@ -111,13 +111,6 @@ function Grid(props) {
   const moving = useRef(false);
   const time = useRef(0);
 
-  const lockOptions = {
-    animationData: lockAnimation,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  };
-
   function changeColor(e, color) {
     if (!isLocked) {
       e.target.style.backgroundColor = color;
@@ -278,7 +271,8 @@ function Grid(props) {
                 }}
               >
                 <source
-                  src={process.env.PUBLIC_URL +
+                  src={
+                    process.env.PUBLIC_URL +
                     "/assets/section" +
                     props.sectionId +
                     "/Video" +
@@ -295,7 +289,10 @@ function Grid(props) {
                   }}
                 >
                   <div className="play-button-large">
-                    <img alt="play" src={process.env.PUBLIC_URL + "/assets/play_button.svg"} />
+                    <img
+                      alt="play"
+                      src={process.env.PUBLIC_URL + "/assets/play_button.svg"}
+                    />
                   </div>
                 </div>
               )}
@@ -313,7 +310,8 @@ function Grid(props) {
               >
                 <video ref={video2} currentTime={videoCurrentTime}>
                   <source
-                    src={process.env.PUBLIC_URL +
+                    src={
+                      process.env.PUBLIC_URL +
                       "/assets/section" +
                       props.sectionId +
                       "/Video" +
@@ -327,7 +325,8 @@ function Grid(props) {
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                   <video ref={video3}>
                     <source
-                      src={process.env.PUBLIC_URL +
+                      src={
+                        process.env.PUBLIC_URL +
                         "/assets/section" +
                         props.sectionId +
                         "/Video" +
@@ -358,7 +357,8 @@ function Grid(props) {
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                   <video ref={video4}>
                     <source
-                      src={process.env.PUBLIC_URL +
+                      src={
+                        process.env.PUBLIC_URL +
                         "/assets/section" +
                         props.sectionId +
                         "/Video" +
@@ -392,7 +392,8 @@ function Grid(props) {
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                   <video ref={video5}>
                     <source
-                      src={process.env.PUBLIC_URL +
+                      src={
+                        process.env.PUBLIC_URL +
                         "/assets/section" +
                         props.sectionId +
                         "/Video" +
@@ -415,7 +416,8 @@ function Grid(props) {
               {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
                 <video ref={video6}>
                   <source
-                    src={process.env.PUBLIC_URL +
+                    src={
+                      process.env.PUBLIC_URL +
                       "/assets/section" +
                       props.sectionId +
                       "/Video" +
@@ -431,7 +433,14 @@ function Grid(props) {
                   width: (gridWidth / 3) * 2,
                   height: (gridHeight / 3) * 2
                 }}
-              > <Carousel sectionId={props.sectionId} width={(gridWidth / 3) * 2} height={(gridHeight / 3) * 2}/></div>
+              >
+                {" "}
+                <Carousel
+                  sectionId={props.sectionId}
+                  width={(gridWidth / 3) * 2}
+                  height={(gridHeight / 3) * 2}
+                />
+              </div>
             </div>
           </div>
           <div
@@ -451,14 +460,14 @@ function Grid(props) {
               }}
             >
               <Lottie
-              options={{
-                loop: false,
-                autoplay: false,
-                animationData: lockAnimation,
-                rendererSettings: {
-                  preserveAspectRatio: "xMidYMid slice"
-                }
-              }}
+                options={{
+                  loop: false,
+                  autoplay: false,
+                  animationData: lockAnimation,
+                  rendererSettings: {
+                    preserveAspectRatio: "xMidYMid slice"
+                  }
+                }}
                 height={72}
                 width={72}
                 isStopped={isLocked}
