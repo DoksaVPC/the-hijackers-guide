@@ -4,12 +4,14 @@ import DataCard from "../components/dataCard";
 import Carousel from "../components/carousel";
 import Lottie from "react-lottie";
 import lockAnimation from "../lottie/lock_animation.json";
+import { ReactComponent as DocumentIcon } from "../document.svg";
+import AboutHover from "../components/aboutHover";
 
 function Grid(props) {
-  let WindowSize = {
+  const [WindowSize, setWindowSize] = useState({
     x: window.innerWidth,
     y: window.innerHeight
-  };
+  });
 
   const UNLOCK_TIME = {
     "01": 210.5,
@@ -80,10 +82,17 @@ function Grid(props) {
   const handlerRadius = 20;
   const [isLocked, setLocked] = useState(true);
 
-  const [handlerPos, setHandlerPos] = useState({
-    x: (gridWidth / 3) * 2 - handlerRadius,
-    y: (gridHeight / 3) * 2 - handlerRadius
-  });
+  const [handlerPosX, setHandlerPosX] = useState(
+    (gridWidth / 3) * 2 - handlerRadius
+  );
+  const [handlerPosY, setHandlerPosY] = useState(
+    (gridHeight / 3) * 2 - handlerRadius
+  );
+
+  const maxHandlerX = (gridWidth / 3) * 2 - handlerRadius;
+  const minHandlerX = gridWidth / 3 - handlerRadius;
+  const maxHandlerY = (gridHeight / 3) * 2 - handlerRadius;
+  const minHandlerY = gridHeight / 3 - handlerRadius;
   const [movingHandler, setMovingHandler] = useState(false);
   const [movingControllerHandler, setMovingControllerHandler] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -137,10 +146,20 @@ function Grid(props) {
         x: e.pageX - gridLeft - handlerRadius,
         y: e.pageY - handlerRadius
       };
-      setHandlerPos({
-        x: mousePos.x,
-        y: mousePos.y
-      });
+      if (mousePos.x < maxHandlerX && mousePos.x > minHandlerX) {
+        setHandlerPosX(mousePos.x);
+      } else if (mousePos.x >= maxHandlerX) {
+        setHandlerPosX(maxHandlerX);
+      } else if (mousePos.x <= minHandlerX) {
+        setHandlerPosX(minHandlerX);
+      }
+      if (mousePos.y < maxHandlerY && mousePos.y > minHandlerY) {
+        setHandlerPosY(mousePos.y);
+      } else if (mousePos.y >= maxHandlerY) {
+        setHandlerPosY(maxHandlerY);
+      } else if (mousePos.y <= minHandlerY) {
+        setHandlerPosY(minHandlerY);
+      }
     } else if (movingControllerHandler) {
       if (gridLeft === -1) {
         gridLeft = document.getElementById("grid").getBoundingClientRect().left;
@@ -220,17 +239,25 @@ function Grid(props) {
   };
 
   let ungrab = function() {
-    console.log("should ungrab");
     setMovingHandler(false);
     setMovingControllerHandler(false);
   };
 
+  let handleResize = function() {
+    setWindowSize({
+      x: window.innerWidth,
+      y: window.innerHeight
+    });
+  };
+
   useEffect(() => {
     window.addEventListener("mouseup", ungrab);
+    window.addEventListener("resize", handleResize);
 
     // cleanup this component
     return () => {
       window.removeEventListener("mouseup", ungrab);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -251,12 +278,12 @@ function Grid(props) {
         >
           <div
             className="grid-container"
-            style={{ height: handlerPos.y + handlerRadius }}
+            style={{ height: handlerPosY + handlerRadius }}
           >
             <div
               className="grid-unit"
               style={{
-                width: handlerPos.x + handlerRadius,
+                width: handlerPosX + handlerRadius,
                 borderTopWidth: 0,
                 borderLeftWidth: 0
               }}
@@ -281,7 +308,7 @@ function Grid(props) {
                   }
                 />
               </video>
-              {neverPlayed && (
+              {neverPlayed && videoCurrentTime < 1 && (
                 <div
                   className="play-button-large-container"
                   onClick={() => {
@@ -300,7 +327,7 @@ function Grid(props) {
             <div
               className="double-container vertical"
               style={{
-                width: gridWidth - (handlerPos.x + handlerRadius),
+                width: gridWidth - (handlerPosX + handlerRadius),
                 borderTopWidth: 0
               }}
             >
@@ -342,13 +369,13 @@ function Grid(props) {
           <div
             className="grid-container"
             style={{
-              height: gridHeight - (handlerPos.y + handlerRadius),
+              height: gridHeight - (handlerPosY + handlerRadius),
               borderBottom: 0
             }}
           >
             <div
               className="double-container horizontal"
-              style={{ width: handlerPos.x + handlerRadius }}
+              style={{ width: handlerPosX + handlerRadius }}
             >
               <div
                 className="grid-unit half"
@@ -368,25 +395,32 @@ function Grid(props) {
                     />
                   </video>
                 )}
-                <div
-                  className="content-container bottom-left"
-                  style={{ width: gridWidth / 3, height: (gridHeight / 3) * 2 }}
-                >
-                  <DataCard
-                    color={props.color}
-                    hashtagName={CARD_DATA[props.sectionId].title}
-                    originalDate={CARD_DATA[props.sectionId].originalDate}
-                    hijackDate={CARD_DATA[props.sectionId].hijackDate}
-                    originalUsers={CARD_DATA[props.sectionId].originalUsers}
-                    hijackUsers={CARD_DATA[props.sectionId].hijackUsers}
-                    originalAim={CARD_DATA[props.sectionId].originalAim}
-                    hijackAim={CARD_DATA[props.sectionId].hijackAim}
-                    postCount={CARD_DATA[props.sectionId].postCount}
-                    platforms={CARD_DATA[props.sectionId].platforms}
-                    timeRange={CARD_DATA[props.sectionId].timeRange}
-                    tactic={CARD_DATA[props.sectionId].tactic}
-                  />
-                </div>
+                {videoCurrentTime >= UNLOCK_TIME[props.sectionId] && (
+                  <div
+                    className="content-container bottom-left"
+                    style={{
+                      width: gridWidth / 3,
+                      height: (gridHeight / 3) * 2,
+                      animationDelay: "0.5s"
+                    }}
+                  >
+                    <DataCard
+                      color={props.color}
+                      hashtagName={CARD_DATA[props.sectionId].title}
+                      originalDate={CARD_DATA[props.sectionId].originalDate}
+                      hijackDate={CARD_DATA[props.sectionId].hijackDate}
+                      originalUsers={CARD_DATA[props.sectionId].originalUsers}
+                      hijackUsers={CARD_DATA[props.sectionId].hijackUsers}
+                      originalAim={CARD_DATA[props.sectionId].originalAim}
+                      hijackAim={CARD_DATA[props.sectionId].hijackAim}
+                      postCount={CARD_DATA[props.sectionId].postCount}
+                      platforms={CARD_DATA[props.sectionId].platforms}
+                      timeRange={CARD_DATA[props.sectionId].timeRange}
+                      tactic={CARD_DATA[props.sectionId].tactic}
+                    />
+                  </div>
+                )}
+                <div className="shadow" />
               </div>
               <div className="grid-unit half" style={{ borderBottomWidth: 0 }}>
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
@@ -403,12 +437,30 @@ function Grid(props) {
                     />
                   </video>
                 )}
+                {videoCurrentTime >= UNLOCK_TIME[props.sectionId] && (
+                  <div
+                    className="content-container bottom-center"
+                    style={{
+                      height: gridHeight - (handlerPosY + handlerRadius),
+                      animationDelay: "0.6s"
+                    }}
+                  >
+                    <DocumentIcon
+                      width="2.5em"
+                      height="2.5em"
+                      fill={props.color}
+                    />
+                    <a href="" target="_blank" rel="noopener noreferrer">
+                      <AboutHover text="Download the insights" width={16} />
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
             <div
               className="grid-unit"
               style={{
-                width: gridWidth - (handlerPos.x + handlerRadius),
+                width: gridWidth - (handlerPosX + handlerRadius),
                 borderBottomWidth: 0,
                 borderRightWidth: 0
               }}
@@ -427,25 +479,30 @@ function Grid(props) {
                   />
                 </video>
               )}
-              <div
-                className="content-container bottom-right"
-                style={{
-                  width: (gridWidth / 3) * 2,
-                  height: (gridHeight / 3) * 2
-                }}
-              >
-                {" "}
-                <Carousel
-                  sectionId={props.sectionId}
-                  width={(gridWidth / 3) * 2}
-                  height={(gridHeight / 3) * 2}
-                />
-              </div>
+              {videoCurrentTime >= UNLOCK_TIME[props.sectionId] && (
+                <div
+                  className="content-container bottom-right"
+                  style={{
+                    width: (gridWidth / 3) * 2,
+                    height: (gridHeight / 3) * 2,
+                    animationDelay: "0.7s"
+                  }}
+                >
+                  {" "}
+                  <Carousel
+                    sectionId={props.sectionId}
+                    width={(gridWidth / 3) * 2}
+                    height={(gridHeight / 3) * 2}
+                    color={props.color}
+                  />
+                </div>
+              )}
+              <div className="shadow" />
             </div>
           </div>
           <div
             className="handler"
-            style={{ left: handlerPos.x, top: handlerPos.y }}
+            style={{ left: handlerPosX, top: handlerPosY }}
             onMouseDown={toggleGrab}
             onMouseEnter={event => changeColor(event, props.color)}
             onMouseOut={event => changeColor(event, "GhostWhite")}

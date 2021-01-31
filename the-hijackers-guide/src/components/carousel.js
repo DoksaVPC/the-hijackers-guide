@@ -1,8 +1,8 @@
 import CarouselItem from "../components/carouselItem";
 import CarouselImage from "../components/carouselImage";
 import { React, useRef, useState, useEffect } from "react";
-import leftArrow from "../left_arrow.svg";
-import rightArrow from "../right_arrow.svg";
+import { ReactComponent as LeftArrow } from "../left_arrow.svg";
+import { ReactComponent as RightArrow } from "../right_arrow.svg";
 
 function Carousel(props) {
   const [collection, setCollection] = useState([]);
@@ -65,22 +65,6 @@ function Carousel(props) {
     return array;
   }
 
-  function resizeImage(e) {
-    let image = e.target;
-    let width = image.naturalWidth;
-    let height = image.naturalHeight;
-    console.log(width);
-    if (width > height) {
-      image.style.width = "100%";
-      image.style.height = "auto";
-      console.log(image.width);
-    } else {
-      image.style.height = props.height * 0.9;
-      image.style.width = "auto";
-    }
-    console.log("resized!");
-  }
-
   return (
     <div className="carousel-container">
       {collection.length > 1 && (
@@ -114,94 +98,111 @@ function Carousel(props) {
             setTransitioning({ state: false, direction: 0 });
           }}
         >
-          <div
-            className="image-wrapper"
-            style={{ width: props.width * 0.4, height: props.height * 0.7 }}
-          >
-            <CarouselImage
-              src={
-                currentIndex > 1
-                  ? process.env.PUBLIC_URL + collection[currentIndex - 2].src
-                  : process.env.PUBLIC_URL +
-                    collection[collection.length - (2 - currentIndex)].src
-              }
-              maxHeight={props.height * 0.7}
-            />
-          </div>
-          <div
-            className="image-wrapper"
-            style={{ width: props.width * 0.4, height: props.height * 0.7 }}
-          >
-            <CarouselImage
-              src={
-                currentIndex > 0
-                  ? process.env.PUBLIC_URL + collection[currentIndex - 1].src
-                  : process.env.PUBLIC_URL +
-                    collection[collection.length - 1].src
-              }
-              maxHeight={props.height * 0.7}
-            />
-          </div>
-          <div
-            className="image-wrapper"
-            style={{ width: props.width * 0.4, height: props.height * 0.9 }}
-          >
-            <CarouselImage
-              src={process.env.PUBLIC_URL + collection[currentIndex].src}
-              maxHeight={props.height * 0.9}
-            />
-          </div>
-          <div
-            className="image-wrapper"
-            style={{
-              width: props.width * 0.4,
-              height: props.height * 0.7
-            }}
-          >
-            <CarouselImage
-              src={
-                currentIndex < collection.length - 1
-                  ? process.env.PUBLIC_URL + collection[currentIndex + 1].src
-                  : process.env.PUBLIC_URL + collection[0].src
-              }
-              maxHeight={props.height * 0.7}
-            />
-          </div>
-          <div
-            className="image-wrapper"
-            style={{
-              width: props.width * 0.4,
-              height: props.height * 0.7
-            }}
-          >
-            <CarouselImage
-              src={
-                currentIndex < collection.length - 2
-                  ? process.env.PUBLIC_URL + collection[currentIndex + 2].src
-                  : process.env.PUBLIC_URL +
-                    collection[0 + (currentIndex - (collection.length - 2))].src
-              }
-              maxHeight={props.height * 0.7}
-            />
-          </div>
+          <CarouselImage
+            src={
+              currentIndex > 1
+                ? process.env.PUBLIC_URL + collection[currentIndex - 2].src
+                : process.env.PUBLIC_URL +
+                  collection[collection.length - (2 - currentIndex)].src
+            }
+            type={
+              currentIndex > 1
+                ? collection[currentIndex - 2].type
+                : collection[collection.length - (2 - currentIndex)].type
+            }
+            color={props.color}
+            width={props.width}
+            height={props.height}
+          />
+
+          <CarouselImage
+            src={
+              currentIndex > 0
+                ? process.env.PUBLIC_URL + collection[currentIndex - 1].src
+                : process.env.PUBLIC_URL + collection[collection.length - 1].src
+            }
+            type={
+              currentIndex > 0
+                ? collection[currentIndex - 1].type
+                : collection[collection.length - 1].type
+            }
+            color={props.color}
+            width={props.width}
+            height={props.height}
+          />
+
+          <CarouselImage
+            src={process.env.PUBLIC_URL + collection[currentIndex].src}
+            type={collection[currentIndex].type}
+            color={props.color}
+            width={props.width}
+            height={props.height}
+          />
+
+          <CarouselImage
+            src={
+              currentIndex < collection.length - 1
+                ? process.env.PUBLIC_URL + collection[currentIndex + 1].src
+                : process.env.PUBLIC_URL + collection[0].src
+            }
+            type={
+              currentIndex < collection.length - 1
+                ? collection[currentIndex + 1].type
+                : collection[0].type
+            }
+            color={props.color}
+            width={props.width}
+            height={props.height}
+          />
+
+          <CarouselImage
+            src={
+              currentIndex < collection.length - 2
+                ? process.env.PUBLIC_URL + collection[currentIndex + 2].src
+                : process.env.PUBLIC_URL +
+                  collection[0 + (currentIndex - (collection.length - 2))].src
+            }
+            type={
+              currentIndex < collection.length - 2
+                ? collection[currentIndex + 2].type
+                : collection[0 + (currentIndex - (collection.length - 2))].type
+            }
+            color={props.color}
+            width={props.width}
+            height={props.height}
+          />
         </div>
       )}
+      <div
+        className="carousel-arrow left-arrow"
+        style={{ width: "30%", height: props.height }}
+      />
+      <div
+        className="carousel-arrow right-arrow"
+        style={{ width: "30%", height: props.height }}
+      />
       <button
         className="carousel-arrow left-arrow"
+        style={{ height: props.height }}
         onClick={event => {
           event.preventDefault();
           console.log(currentIndex);
           setTransitioning({ state: true, direction: 1 });
         }}
-      />
+      >
+        <LeftArrow fill={props.color} />
+      </button>
       <button
         className="carousel-arrow right-arrow"
+        style={{ height: props.height }}
         onClick={event => {
           event.preventDefault();
           console.log(currentIndex);
           setTransitioning({ state: true, direction: -1 });
         }}
-      />
+      >
+        <RightArrow fill={props.color} />
+      </button>
     </div>
   );
 }
