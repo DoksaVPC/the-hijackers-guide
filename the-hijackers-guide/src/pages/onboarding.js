@@ -14,8 +14,10 @@ function Onboarding() {
         feed.
         <br />
         <br />
-        <Link to="/guidelines">Begin the experience</Link> to get a complete
-        view of the phenomenon and how to take part in it.
+        <Link to="/the-hijackers-guide/guidelines">
+          Begin the experience
+        </Link>{" "}
+        to get a complete view of the phenomenon and how to take part in it.
       </h3>
     </div>
   );

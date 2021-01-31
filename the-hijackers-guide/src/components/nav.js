@@ -4,13 +4,13 @@ function Nav() {
   const location = useLocation();
   return (
     <div className="nav-container">
-      <Link to="/guidelines">
+      <Link to="/the-hijackers-guide/guidelines">
         <div className="nav-button">
           <img alt="" src={process.env.PUBLIC_URL + "/assets/navButton.svg"} />{" "}
           <div>HOME</div>{" "}
         </div>
       </Link>
-      <Link to="/about">
+      <Link to="/the-hijackers-guide/about">
         <div className="nav-button">
           <img alt="" src={process.env.PUBLIC_URL + "/assets/navButton.svg"} />{" "}
           <div>ABOUT</div>{" "}
