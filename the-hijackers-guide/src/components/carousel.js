@@ -7,6 +7,10 @@ import rightArrow from "../right_arrow.svg";
 function Carousel(props) {
   const [collection, setCollection] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [transitioning, setTransitioning] = useState({
+    state: false,
+    direction: 0
+  });
 
   const HIJACKED_COUNT = {
     "01": 40,
@@ -80,10 +84,53 @@ function Carousel(props) {
   return (
     <div className="carousel-container">
       {collection.length > 1 && (
-        <div className="carousel-images-container">
+        <div
+          className="carousel-images-container"
+          style={
+            transitioning.state
+              ? {
+                  transform:
+                    "translateX(" +
+                    props.width * 0.44 * transitioning.direction +
+                    "px)",
+                  transition: "transform 0.15s"
+                }
+              : { transform: "translateX(0)", transition: "none" }
+          }
+          onTransitionEnd={() => {
+            if (transitioning.direction > 0) {
+              if (currentIndex > 0) {
+                setCurrentIndex(currentIndex - 1);
+              } else {
+                setCurrentIndex(collection.length - 1);
+              }
+            } else if (transitioning.direction < 0) {
+              if (currentIndex < collection.length - 1) {
+                setCurrentIndex(currentIndex + 1);
+              } else {
+                setCurrentIndex(0);
+              }
+            }
+            setTransitioning({ state: false, direction: 0 });
+          }}
+        >
           <div
             className="image-wrapper"
-            style={{ width: props.width * 0.5, height: props.height * 0.7 }}
+            style={{ width: props.width * 0.4, height: props.height * 0.7 }}
+          >
+            <CarouselImage
+              src={
+                currentIndex > 1
+                  ? process.env.PUBLIC_URL + collection[currentIndex - 2].src
+                  : process.env.PUBLIC_URL +
+                    collection[collection.length - (2 - currentIndex)].src
+              }
+              maxHeight={props.height * 0.7}
+            />
+          </div>
+          <div
+            className="image-wrapper"
+            style={{ width: props.width * 0.4, height: props.height * 0.7 }}
           >
             <CarouselImage
               src={
@@ -97,7 +144,7 @@ function Carousel(props) {
           </div>
           <div
             className="image-wrapper"
-            style={{ width: props.width * 0.5, height: props.height * 0.9 }}
+            style={{ width: props.width * 0.4, height: props.height * 0.9 }}
           >
             <CarouselImage
               src={process.env.PUBLIC_URL + collection[currentIndex].src}
@@ -107,7 +154,7 @@ function Carousel(props) {
           <div
             className="image-wrapper"
             style={{
-              width: props.width * 0.5,
+              width: props.width * 0.4,
               height: props.height * 0.7
             }}
           >
@@ -120,6 +167,23 @@ function Carousel(props) {
               maxHeight={props.height * 0.7}
             />
           </div>
+          <div
+            className="image-wrapper"
+            style={{
+              width: props.width * 0.4,
+              height: props.height * 0.7
+            }}
+          >
+            <CarouselImage
+              src={
+                currentIndex < collection.length - 2
+                  ? process.env.PUBLIC_URL + collection[currentIndex + 2].src
+                  : process.env.PUBLIC_URL +
+                    collection[0 + (currentIndex - (collection.length - 2))].src
+              }
+              maxHeight={props.height * 0.7}
+            />
+          </div>
         </div>
       )}
       <button
@@ -127,11 +191,7 @@ function Carousel(props) {
         onClick={event => {
           event.preventDefault();
           console.log(currentIndex);
-          if (currentIndex > 0) {
-            setCurrentIndex(currentIndex - 1);
-          } else {
-            setCurrentIndex(collection.length - 1);
-          }
+          setTransitioning({ state: true, direction: 1 });
         }}
       />
       <button
@@ -139,11 +199,7 @@ function Carousel(props) {
         onClick={event => {
           event.preventDefault();
           console.log(currentIndex);
-          if (currentIndex < collection.length - 1) {
-            setCurrentIndex(currentIndex + 1);
-          } else {
-            setCurrentIndex(0);
-          }
+          setTransitioning({ state: true, direction: -1 });
         }}
       />
     </div>

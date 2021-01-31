@@ -429,13 +429,14 @@ footer {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+  transform: translateX(0);
+  transition: transform 0.15s;
 }
 
 .image-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: white;
   flex-grow: 0;
   flex-shrink: 0;
   margin-left: 1em;
@@ -445,7 +446,8 @@ footer {
 
 .image-wrapper img {
   width: 100%;
-  object-fit: contain;
+  height: auto;
+  border-radius: 0.5em;
 }
 
 .carousel-item {
