@@ -4,7 +4,7 @@ function CarouselImage(props) {
   return (
     <div
       className="image-wrapper"
-      style={{ width: props.width * 0.4, height: props.height * 0.9 }}
+      style={{ width: props.width * 0.32, height: props.height * 0.9 }}
     >
       <div style={{ position: "relative" }}>
         <img alt="post" src={props.src} />

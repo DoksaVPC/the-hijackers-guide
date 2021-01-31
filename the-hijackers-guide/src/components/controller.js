@@ -119,7 +119,7 @@ function Controller(props) {
           marginTop: 0
         }}
       >
-        {props.isPlaying && (
+        {props.isPlaying && !props.ended && (
           <Lottie
             options={{
               loop: false,
@@ -134,7 +134,7 @@ function Controller(props) {
             isStopped={!props.isPlaying}
           />
         )}
-        {!props.isPlaying && (
+        {!props.isPlaying && !props.ended && (
           <Lottie
             options={{
               loop: false,
@@ -147,6 +147,13 @@ function Controller(props) {
             height={24}
             width={24}
             isStopped={props.isPlaying}
+          />
+        )}
+        {props.ended && (
+          <img
+            style={{ height: 24, width: 24, marginTop: "0.15em" }}
+            alt="replay"
+            src={process.env.PUBLIC_URL + "/assets/replay_button.svg"}
           />
         )}
       </button>
@@ -162,7 +169,10 @@ function Controller(props) {
             }
           }}
         >
-          <img alt="volume" src={process.env.PUBLIC_URL + "/assets/volume_button.svg"} />
+          <img
+            alt="volume"
+            src={process.env.PUBLIC_URL + "/assets/volume_button.svg"}
+          />
         </button>
         <div
           className="volume-slider-container"

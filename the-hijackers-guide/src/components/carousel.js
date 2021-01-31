@@ -75,7 +75,7 @@ function Carousel(props) {
               ? {
                   transform:
                     "translateX(" +
-                    props.width * 0.44 * transitioning.direction +
+                    props.width * 0.35 * transitioning.direction +
                     "px)",
                   transition: "transform 0.15s"
                 }

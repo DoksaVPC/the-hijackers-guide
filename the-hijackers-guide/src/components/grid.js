@@ -6,6 +6,10 @@ import Lottie from "react-lottie";
 import lockAnimation from "../lottie/lock_animation.json";
 import { ReactComponent as DocumentIcon } from "../document.svg";
 import AboutHover from "../components/aboutHover";
+import document01 from "../documents/Hashtag Hijacking Insights - 01 - Efficient hashtag.pdf";
+import document02 from "../documents/Hashtag Hijacking Insights - 02 - Proper social media.pdf";
+import document03 from "../documents/Hashtag Hijacking Insights - 03 - Perfect moment.pdf";
+import document04 from "../documents/Hashtag Hijacking Insights - 04 - Effective tactic.pdf";
 
 function Grid(props) {
   const [WindowSize, setWindowSize] = useState({
@@ -15,14 +19,35 @@ function Grid(props) {
 
   const UNLOCK_TIME = {
     "01": 210.5,
-    "02": 0,
-    "03": 0,
-    "04": 0
+    "02": 222,
+    "03": 156.5,
+    "04": 199
+  };
+
+  const TITLE_TIME = {
+    "01": 19,
+    "02": 19,
+    "03": 18,
+    "04": 19
+  };
+
+  const DOCUMENT_LINK = {
+    "01": document01,
+    "02": document02,
+    "03": document03,
+    "04": document04
+  };
+
+  const TITLE = {
+    "01": "Choose the most efficient hashtag",
+    "02": "Choose the proper social media to achieve our goals",
+    "03": "Hijack in the perfect moment",
+    "04": "Choose the most effective tactic"
   };
 
   const CARD_DATA = {
     "01": {
-      title: "#WHITELIVESMATTER",
+      title: "#WhiteLivesMatter",
       originalDate: "2020-06-02",
       hijackDate: "2020-06-03",
       originalUsers: "White supremacists",
@@ -48,30 +73,30 @@ function Grid(props) {
       tactic: "Flipping"
     },
     "03": {
-      title: "#WHITELIVESMATTER",
-      originalDate: "2020-06-02",
-      hijackDate: "2020-06-03",
-      originalUsers: "White supremacists",
-      hijackUsers: "K-pop stans",
-      originalAim: "Support white supremacy",
-      hijackAim: "Support BLM movement",
-      postCount: "> 94.200",
+      title: "#myNYPD",
+      originalDate: "2014-04-12",
+      hijackDate: "2014-04-12",
+      originalUsers: "@NYPDnews",
+      hijackUsers: "Occupy Movement (LA)",
+      originalAim: "Advertise and support police officers",
+      hijackAim: "Criticize police officers",
+      postCount: "> 100,000",
       platforms: "Twitter",
-      timeRange: "1 day",
-      tactic: "Flooding"
+      timeRange: "1 hour",
+      tactic: "Flipping"
     },
     "04": {
-      title: "#WHITELIVESMATTER",
-      originalDate: "2020-06-02",
-      hijackDate: "2020-06-03",
-      originalUsers: "White supremacists",
-      hijackUsers: "K-pop stans",
-      originalAim: "Support white supremacy",
-      hijackAim: "Support BLM movement",
-      postCount: "> 94.200",
+      title: "#RussiaNeedsPutin",
+      originalDate: "2018-01-14",
+      hijackDate: "2018-01-15",
+      originalUsers: "United Russia party",
+      hijackUsers: "Russian citizens",
+      originalAim: "Political propaganda",
+      hijackAim: "Criticize President Vladimir Putin",
+      postCount: "> 7,000",
       platforms: "Twitter",
       timeRange: "1 day",
-      tactic: "Flooding"
+      tactic: "Flipping"
     }
   };
 
@@ -97,12 +122,12 @@ function Grid(props) {
   const [movingControllerHandler, setMovingControllerHandler] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [neverPlayed, setNeverPlayed] = useState(true);
+  const [videoEnded, setVideoEnded] = useState(false);
   const [videoCurrentTime, setCurrentTime] = useState(0);
-  const [videoDuration, setVideoDuration] = useState(0);
+  const [videoDuration, setVideoDuration] = useState(180);
   const [volume, setVolume] = useState(1);
 
   const video1 = useRef(null);
-  const video2 = useRef(null);
   const video3 = useRef(null);
   const video4 = useRef(null);
   const video5 = useRef(null);
@@ -110,7 +135,6 @@ function Grid(props) {
 
   const videoRefs = [
     video1.current,
-    video2.current,
     video3.current,
     video4.current,
     video5.current,
@@ -184,6 +208,10 @@ function Grid(props) {
     if (neverPlayed) {
       setNeverPlayed(false);
     }
+    if (videoEnded) {
+      setCurrentTime(0);
+      setVideoEnded(false);
+    }
     if (!isPlaying) {
       for (let i = 0; i < videoRefs.length; i++) {
         if (videoRefs[i] !== null) {
@@ -214,9 +242,11 @@ function Grid(props) {
   }
 
   let handleChange = function(value) {
-    console.log(value);
     setCurrentTime(value);
     time.current = value;
+    if (videoEnded) {
+      setVideoEnded(false);
+    }
     for (let i = 0; i < videoRefs.length; i++) {
       if (videoRefs[i] !== null) {
         videoRefs[i].currentTime = time.current;
@@ -295,6 +325,7 @@ function Grid(props) {
                 onDurationChange={event => getVideoDuration(event)}
                 onEnded={() => {
                   setIsPlaying(false);
+                  setVideoEnded(true);
                 }}
               >
                 <source
@@ -335,18 +366,14 @@ function Grid(props) {
                 className="grid-unit half"
                 style={{ borderTopWidth: 0, borderRightWidth: 0 }}
               >
-                <video ref={video2} currentTime={videoCurrentTime}>
-                  <source
-                    src={
-                      process.env.PUBLIC_URL +
-                      "/assets/section" +
-                      props.sectionId +
-                      "/Video" +
-                      props.sectionId +
-                      "-Box2.mp4"
-                    }
-                  />
-                </video>
+                {videoCurrentTime >= TITLE_TIME[props.sectionId] && (
+                  <div className="title-container">
+                    <p>HOW TO</p>
+                    <h2 style={{ color: props.color }}>
+                      {TITLE[props.sectionId]}
+                    </h2>
+                  </div>
+                )}
               </div>
               <div className="grid-unit half" style={{ borderRightWidth: 0 }}>
                 {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
@@ -445,14 +472,20 @@ function Grid(props) {
                       animationDelay: "0.6s"
                     }}
                   >
-                    <DocumentIcon
-                      width="2.5em"
-                      height="2.5em"
-                      fill={props.color}
-                    />
-                    <a href="" target="_blank" rel="noopener noreferrer">
-                      <AboutHover text="Download the insights" width={16} />
-                    </a>
+                    <div className="document-container">
+                      <DocumentIcon
+                        width="2.5em"
+                        height="2.5em"
+                        fill={props.color}
+                      />
+                      <a
+                        href={DOCUMENT_LINK[props.sectionId]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <AboutHover text="Download the insights" width={16} />
+                      </a>
+                    </div>
                   </div>
                 )}
               </div>
@@ -544,6 +577,7 @@ function Grid(props) {
           setVolume={setVolume}
           volume={volume}
           isPlaying={isPlaying}
+          ended={videoEnded}
         />
       </div>
     </div>

@@ -70,6 +70,20 @@ footer {
   background-color: var(--black);
 }
 
+img {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
+video {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -287,6 +301,21 @@ footer {
   flex-basis: 50%;
 }
 
+.title-container {
+  align-self: flex-end;
+  padding: 6.5% 3.5%;
+  text-align: left;
+}
+
+.title-container p {
+  font-size: 0.8em;
+  margin-bottom: 0;
+}
+
+.title-container h2 {
+  margin: 0;
+}
+
 .grid-unit video {
   position: absolute;
   bottom: 0;
@@ -317,7 +346,15 @@ footer {
   width: 100%;
   align-items: center;
   font-size: 1.2em;
+}
+
+.document-container {
+  display: flex;
   flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 1em;
 }
 
 .bottom-center a {
@@ -427,6 +464,7 @@ footer {
 .card-info-label {
   color: var(--black);
   font-size: 0.7em;
+  width: 100%;
 }
 
 .card-info-label-container {
@@ -437,6 +475,8 @@ footer {
   position: absolute;
   padding: 0.1em 0.2em;
   top: 0;
+  width: 100%;
+  border-bottom: 1px var(--grey) solid;
 }
 
 .card-info-column p {
@@ -623,6 +663,7 @@ footer {
 }
 
 .controller-button img {
+  margin-top: 0.1em;
   height: 24px;
   width: 24px;
 }
@@ -673,7 +714,7 @@ footer {
   pointer-events: none;
   color: var(--background);
   font-family: "Noto Sans", sans-serif;
-  font-size: 0.8em;
+  font-size: 0.9rem;
   position: absolute;
   right: 0;
   margin: 2rem;
@@ -696,6 +737,15 @@ footer {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
