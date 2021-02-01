@@ -414,7 +414,7 @@ function Grid(props) {
                 )}
               </div>
               <div className="grid-unit half" style={{ borderRightWidth: 0 }}>
-                {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
+                {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 2 && (
                   <video ref={video3}>
                     <source
                       src={
@@ -526,7 +526,7 @@ function Grid(props) {
                 <div className="shadow" />
               </div>
               <div className="grid-unit half" style={{ borderBottomWidth: 0 }}>
-                {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
+                {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 2 && (
                   <video ref={video5}>
                     <source
                       src={
@@ -583,7 +583,7 @@ function Grid(props) {
                 borderRightWidth: 0
               }}
             >
-              {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
+              {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 2 && (
                 <video ref={video6}>
                   <source
                     src={
