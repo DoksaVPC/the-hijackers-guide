@@ -171,7 +171,7 @@ function Controller(props) {
         >
           <img
             alt="volume"
-            src={process.env.PUBLIC_URL + "/assets/volume_button.svg"}
+            src={props.volume > 0 ? (process.env.PUBLIC_URL + "/assets/volume_button.svg") : (process.env.PUBLIC_URL + "/assets/volume_button_muted.svg")}
           />
         </button>
         <div

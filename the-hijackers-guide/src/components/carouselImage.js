@@ -8,8 +8,13 @@ function CarouselImage(props) {
     >
       <div style={{ position: "relative" }}>
         <img alt="post" src={props.src} />
+        <div className="image-labels-container">
+        <div className="image-label" style={{ backgroundColor: props.color }}>
+          {props.hashtag}
+        </div>
         <div className="image-label" style={{ backgroundColor: props.color }}>
           {props.type}
+        </div>
         </div>
       </div>
     </div>

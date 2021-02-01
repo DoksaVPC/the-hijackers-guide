@@ -18,26 +18,18 @@ function AboutHover(props) {
       }}
     >
       <u>{props.text}</u>
-      <div
+      <div className="popup-box"
         style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "absolute",
           width: (props.width || 22) + "em",
-          height: ((props.width || 22) * 9) / 16 + "em",
-          backgroundColor: "rgb(120, 120, 120)",
-          pointerEvents: "none",
           transform: "scale(" + contentOpacity + ")",
-          opacity: contentOpacity,
-          transition: "opacity 0.2s, transform 0.3s",
-          borderRadius: "0.3em",
-          zIndex: 2
+          opacity: contentOpacity
         }}
-      ></div>
+      >
+      {props.type !== 'video' ? (<img alt={props.alt} src={props.src}/>) : (<video src={props.src} muted autoPlay loop/>)}
+      </div>
       <u
         style={{
-          color: "white",
+          color: props.textColor || "white",
           position: "absolute",
           opacity: contentOpacity,
           transition: "opacity 0.2s",

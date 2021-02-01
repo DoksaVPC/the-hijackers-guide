@@ -95,13 +95,61 @@ function About() {
                   />{" "}
                 </video>
                 The K-pop fandoms hijacked many hashtags: <br />
-                <AboutHover text="#StandWithTuckerCarlson" />,{" "}
-                <AboutHover text="#ExposeAntifa" />,
-                <AboutHover text="#WhiteOutWednesday" />,{" "}
-                <AboutHover text="#CalminKirkland" />,
-                <AboutHover text="#WhiteLivesMatter" />,{" "}
-                <AboutHover text="#AllLivesMatter" />,{" "}
-                <AboutHover text="#Pro-Trump" />, <AboutHover text="#MAGA" />{" "}
+                <AboutHover
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/about/StandWithTuckerCarlson.png"
+                }
+                alt= "#StandWithTuckerCarlson"
+                text="#StandWithTuckerCarlson" />,{" "}
+                <AboutHover
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/about/ExposeAntifa.png"
+                }
+                alt= "#ExposeAntifa"
+                text="#ExposeAntifa"
+                width={18} />,{" "}
+                <AboutHover
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/about/WhiteOutWednesday.png"
+                }
+                alt= "#WhiteOutWednesday"
+                text="#WhiteOutWednesday"
+                width={18} />,{" "}
+                <AboutHover
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/about/CalminKirkland.png"
+                }
+                alt= "#CalminKirkland"
+                text="#CalminKirkland"
+                width={16} />,{" "}
+                <AboutHover
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/about/WhiteLivesMatter.png"
+                }
+                width={18}
+                alt= "#WhiteLivesMatter"
+                text="#WhiteLivesMatter" />,{" "}
+                <AboutHover
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/about/AllLivesMatter.png"
+                }
+                width={18}
+                alt= "#AllLivesMatter"
+                text="#AllLivesMatter" />,{" "}
+                <AboutHover
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/about/maga.png"
+                }
+                width={18}
+                alt= "#MAGA"
+                text="#MAGA" />{" "}
                 and many others.
               </p>
             </div>
@@ -177,19 +225,43 @@ function About() {
           <div className="flex-list">
             <p className="flex-paragraph">
               <div className="number">1</div>
-              <AboutHover text="Collective actions occur very quickly and with a short duration, and its success is correlated to the efficiency of the hashtags used to share it." />
+              <AboutHover
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/about/Viz01.png"
+              }
+              alt= "stan wars viz01"
+              text="Collective actions occur very quickly and with a short duration, and its success is correlated to the efficiency of the hashtags used to share it." />
             </p>
             <p className="flex-paragraph">
               <div className="number">2</div>
-              <AboutHover text="The number of hijacked posts can be greater than the number of posts related to the original meaning of the hashtag." />
+              <AboutHover
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/about/Viz02.png"
+              }
+              alt= "stan wars viz02"
+              text="The number of hijacked posts can be greater than the number of posts related to the original meaning of the hashtag." />
             </p>
             <p className="flex-paragraph">
               <div className="number">3</div>
-              <AboutHover text="Users who usually take part in the hijacks shorten their distances by creating hidden networks based on their shared interests and common topics." />
+              <AboutHover
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/about/Viz03.png"
+              }
+              alt= "stan wars viz03"
+              text="Users who usually take part in the hijacks shorten their distances by creating hidden networks based on their shared interests and common topics." />
             </p>
             <p className="flex-paragraph">
               <div className="number">4</div>
-              <AboutHover text="Newspapers paint the hijackers in many different ways, which can depend on the type of website covering the events." />
+              <AboutHover
+              src={
+                process.env.PUBLIC_URL +
+                "/assets/about/Viz04.png"
+              }
+              alt= "stan wars viz04"
+              text="Newspapers paint the hijackers in many different ways, which can depend on the type of website covering the events." />
             </p>
           </div>
           <hr />
@@ -283,7 +355,14 @@ function About() {
                 />
                 You can{" "}
                 <a href="https://doksavpc.github.io/dd16-phase2-group02/">
-                  <AboutHover text="download our dataset" width={18} />
+                  <AboutHover
+                  text="download our dataset"
+                  src={
+                    process.env.PUBLIC_URL +
+                    "/assets/about/dataset.mp4"
+                  }
+                  textColor = "var(--black)"
+                  type="video"/>
                 </a>
                 , which collects the most famous hashtag hijackings on media
                 from 2010 to 2020.{" "}

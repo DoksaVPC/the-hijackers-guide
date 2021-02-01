@@ -2,7 +2,7 @@ import CardColumn from "../components/cardColumn";
 
 function DataCard(props) {
   return (
-    <div className="card data-card">
+    <div className="card data-card" style={{height: props.height * 0.9, fontSize: props.width * 0.04}}>
       <h4 className="card-header">{props.hashtagName}</h4>
       <div
         className="column-container"
@@ -17,7 +17,7 @@ function DataCard(props) {
         />
         <CardColumn
           color={props.color}
-          title={"HASHTAG\nHIJACK"}
+          title={"HASHTAG HIJACK"}
           date={props.hijackDate}
           users={props.hijackUsers}
           aim={props.hijackAim}

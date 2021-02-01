@@ -25,10 +25,10 @@ function Grid(props) {
   };
 
   const TITLE_TIME = {
-    "01": 19,
-    "02": 19,
+    "01": 18,
+    "02": 18,
     "03": 18,
-    "04": 19
+    "04": 18
   };
 
   const DOCUMENT_LINK = {
@@ -97,11 +97,41 @@ function Grid(props) {
       platforms: "Twitter",
       timeRange: "1 day",
       tactic: "Flipping"
-    }
+    },
+    "04-1": {
+      title: "#QAnon",
+      originalDate: "June 2020",
+      hijackDate: "June 2020",
+      originalUsers: "QAnon supporters",
+      hijackUsers: "K-Pop Stans, Anonymous",
+      originalAim: "Support the conspiracy theory",
+      hijackAim: "Drown out conspiracy theories content",
+      postCount: "> 22,000",
+      platforms: "Twitter",
+      timeRange: "Unknown",
+      tactic: "Flooding"
+    },
+    "04-2": {
+      title: "#JustinBieber",
+      originalDate: "Unknown",
+      hijackDate: "2016-01-22",
+      originalUsers: "Justin Bieber fans",
+      hijackUsers: "The Islamic State",
+      originalAim: "Support the singer",
+      hijackAim: "Spread violent messages, threats and terrorist acts",
+      postCount: "Unknown",
+      platforms: "Twitter",
+      timeRange: "Unknown",
+      tactic: "Exploiting"
+    },
   };
 
   let playerControllerHeight = 56;
   let gridWidth = ((WindowSize.y - playerControllerHeight) / 9) * 16;
+  if (gridWidth > WindowSize.x * 0.88){
+    playerControllerHeight = WindowSize.y - (((WindowSize.x * 0.88)/16)*9);
+    gridWidth = ((WindowSize.y - playerControllerHeight) / 9) * 16;
+  }
   let gridHeight = WindowSize.y - playerControllerHeight;
   let gridLeft = -1;
   const handlerRadius = 20;
@@ -278,6 +308,14 @@ function Grid(props) {
       x: window.innerWidth,
       y: window.innerHeight
     });
+    if (isLocked){
+      setHandlerPosX(
+        (gridWidth / 3) * 2 - handlerRadius
+      );
+      setHandlerPosY(
+        (gridHeight / 3) * 2 - handlerRadius
+      );
+    }
   };
 
   useEffect(() => {
@@ -408,7 +446,7 @@ function Grid(props) {
                 className="grid-unit half"
                 style={{ borderBottomWidth: 0, borderLeftWidth: 0 }}
               >
-                {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 10 && (
+                {videoCurrentTime <= UNLOCK_TIME[props.sectionId] - 2 && (
                   <video ref={video4}>
                     <source
                       src={
@@ -433,6 +471,8 @@ function Grid(props) {
                   >
                     <DataCard
                       color={props.color}
+                      height={(gridHeight / 3) * 2}
+                      width = {gridWidth / 3}
                       hashtagName={CARD_DATA[props.sectionId].title}
                       originalDate={CARD_DATA[props.sectionId].originalDate}
                       hijackDate={CARD_DATA[props.sectionId].hijackDate}
@@ -445,6 +485,42 @@ function Grid(props) {
                       timeRange={CARD_DATA[props.sectionId].timeRange}
                       tactic={CARD_DATA[props.sectionId].tactic}
                     />
+                    {props.sectionId === '04' && (
+                      <div>
+                      <DataCard
+                      color={props.color}
+                      height={(gridHeight / 3) * 2}
+                      width = {gridWidth / 3}
+                      hashtagName={CARD_DATA['04-2'].title}
+                      originalDate={CARD_DATA['04-2'].originalDate}
+                      hijackDate={CARD_DATA['04-2'].hijackDate}
+                      originalUsers={CARD_DATA['04-2'].originalUsers}
+                      hijackUsers={CARD_DATA['04-2'].hijackUsers}
+                      originalAim={CARD_DATA['04-2'].originalAim}
+                      hijackAim={CARD_DATA['04-2'].hijackAim}
+                      postCount={CARD_DATA['04-2'].postCount}
+                      platforms={CARD_DATA['04-2'].platforms}
+                      timeRange={CARD_DATA['04-2'].timeRange}
+                      tactic={CARD_DATA['04-2'].tactic}
+                    />
+                    <DataCard
+                      color={props.color}
+                      height={(gridHeight / 3) * 2}
+                      width = {gridWidth / 3}
+                      hashtagName={CARD_DATA['04-1'].title}
+                      originalDate={CARD_DATA['04-1'].originalDate}
+                      hijackDate={CARD_DATA['04-1'].hijackDate}
+                      originalUsers={CARD_DATA['04-1'].originalUsers}
+                      hijackUsers={CARD_DATA['04-1'].hijackUsers}
+                      originalAim={CARD_DATA['04-1'].originalAim}
+                      hijackAim={CARD_DATA['04-1'].hijackAim}
+                      postCount={CARD_DATA['04-1'].postCount}
+                      platforms={CARD_DATA['04-1'].platforms}
+                      timeRange={CARD_DATA['04-1'].timeRange}
+                      tactic={CARD_DATA['04-1'].tactic}
+                    />
+                    </div>
+                  )}
                   </div>
                 )}
                 <div className="shadow" />
@@ -483,7 +559,16 @@ function Grid(props) {
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <AboutHover text="Download the insights" width={16} />
+                        <AboutHover
+                        alt="pdf document"
+                        src={process.env.PUBLIC_URL +
+                        "/assets/section" +
+                        props.sectionId +
+                        "/document.jpg"}
+                        text="Download the insights"
+                        width={16}
+                        textColor = "var(--black)"
+                         />
                       </a>
                     </div>
                   </div>
