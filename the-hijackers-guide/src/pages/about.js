@@ -1,6 +1,7 @@
 import { React, useState, useRef } from "react";
 import AboutHover from "../components/aboutHover";
 import Menu from "../components/menu";
+import dataset from "../the-hijackers-guide-to-digital-activism_dataset.xlsx";
 
 function About() {
   const [phase2Opacity, setPhase2Opacity] = useState(0);
@@ -45,7 +46,7 @@ function About() {
             />
             In a context characterized by constraints and limitations to
             people's mobility, protests are also moving to the digital
-            environment. Over the course of the year, more and more users have
+            environment. Over the course of 2020, more and more users have
             realized that the power exercised online can translate into real
             change and that, if used correctly, social media can become powerful
             tools for making one's voice heard.
@@ -72,7 +73,7 @@ function About() {
                 the world. Members of this community, who decided to start or
                 take part in a hijack, post contents related to their favorite
                 K-Pop star: memes, images, quotes, music video frames, selfie,
-                but mostly fan-cams (video that focuses on a person performing).
+                but mostly fan-cams (videos that focus on a person performing).
               </p>
             </div>
             <div className="column">
@@ -271,9 +272,8 @@ function About() {
               ref={targets[2].target}
               style={{ position: "absolute", top: "-4em" }}
             />
-            Hijacking is not a very recent tool, but rather has been used for
-            years, few people know exactly what a hashtag hijack is and
-            especially how and in what situations to do it. Even though in the
+            Hijacking is not a very recent tool, even though it has been used for years,
+            only a few people know exactly what a hashtag hijack is and how to use it. Even though in the
             past few months there has been a lot of talk about hashtag
             hijacking, this phenomenon has rarely been explained in its
             totality. This resulted in many articles, videos, blogs etc.. that
@@ -282,10 +282,8 @@ function About() {
           <h3 style={{ padding: "0 1rem", marginTop: 0 }}>
             But how can a user, who is interested in the topic, who wants to
             participate in an online action, or who wants to make their voice
-            heard, take advantage of this tool? What are the basics that you
-            need to understand such a complex phenomenon, and therefore to have
-            a greater awareness of the events and consequences that this has
-            led?
+            heard, take advantage of this tool? Which information do you need understand such a complex phenomenon, and therefore to have
+            a greater awareness of the events and consequences that hashtag hijacking has led to?
           </h3>
           <p
             style={{
@@ -294,11 +292,7 @@ function About() {
               paddingTop: "2rem"
             }}
           >
-            In this gap of knowledge is the project, that aims to highlight all
-            aspects that compose a hijack by explicating and showing them
-            through the use of real cases. It dissects and shows all the parts
-            that constitute a hijack, explaining them by giving examples of real
-            cases.
+            Therefore, this project aims to highlight all the aspects that compose a hijack, presenting them through real case studies, which can become an example for future digital activists.
           </p>
           <div className="column-container">
             <div className="column">
@@ -311,8 +305,7 @@ function About() {
                 In each section, the user is informed, through a video, of a
                 particular guideline both with a more theoretical explanation,
                 almost didactic, and through examples of events in which that
-                particular feature is exploited. The use of case studies also
-                allows bringing the user back to reality by showing what are the
+                particular feature is exploited. The use of case studies also allows to bring the user back to reality by showing what are the
                 physical and material effects of a phenomenon purely digital.
                 The content of the site is open and non-sequential, the user can
                 move freely within the various sections without a predefined
@@ -324,11 +317,20 @@ function About() {
                 <div
                   style={{
                     width: "28em",
-                    height: "5.4em",
-                    backgroundColor: "grey",
                     marginRight: "1rem"
                   }}
+                >
+                <video
+                src={
+                  process.env.PUBLIC_URL +
+                  "/assets/about/spiegazione_griglia.mp4"
+                }
+                muted
+                autoPlay
+                loop
+                style={{width: '100%', height: 'auto'}}
                 />
+                </div>
                 The visual choice of dividing the screen with a grid allows to
                 exploit various media to narrate the events.
               </p>
@@ -338,7 +340,7 @@ function About() {
                 windows that compose the page giving importance to one typology
                 of information rather than another. This multiplicity allows for
                 a more complete experience that uses various communication
-                canals: visual, textual, auditory, as well as hijack itself
+                canals: visual, textual, auditory, like hijack itself
                 does. The experience aims to be as horizontal as possible due to
                 the very nature of the subject covered.
               </p>
@@ -354,7 +356,7 @@ function About() {
                   style={{ position: "absolute", top: "-4em" }}
                 />
                 You can{" "}
-                <a href="https://doksavpc.github.io/dd16-phase2-group02/">
+                <a href={dataset} download>
                   <AboutHover
                   text="download our dataset"
                   src={
@@ -364,7 +366,7 @@ function About() {
                   textColor = "var(--black)"
                   type="video"/>
                 </a>
-                , which collects the most famous hashtag hijackings on media
+                , which collects the most famous hashtag hijackings on social media
                 from 2010 to 2020.{" "}
               </h3>
             </div>
@@ -373,11 +375,18 @@ function About() {
             <div
               style={{
                 width: "98%",
-                height: "20em",
                 margin: "1rem",
-                backgroundColor: "var(--black)"
+                backgroundColor: "var(--background)"
               }}
+            >
+            <img src={
+              process.env.PUBLIC_URL +
+              "/assets/about/protocol.png"
+            }
+            alt = "protocol"
+            style ={{width: '100%', height: 'auto'}}
             />
+            </div>
           </p>
         </div>
         <footer style={{ position: "relative" }}>
@@ -386,6 +395,37 @@ function About() {
             ref={targets[4].target}
             style={{ position: "absolute", top: "-4em" }}
           />
+          <div className="footer-row">
+          <div>A project by</div>
+          <div>Caterina Comini <br/> Lorenzo Di Leonardo <br/>Francesca Mauri<br/>Virginia Migliorini<br/>Fabiola Papini<br/>Sofia Peracchi<br/>Emily Maria Salmaso</div>
+          <img src={
+            process.env.PUBLIC_URL +
+            "/assets/about/authors.jpg"
+          }
+          alt = "authors"
+          style ={{width: '50%', height: 'auto', alignSelf: 'flex-start'}}
+          />
+          </div>
+          <div className="footer-row">
+          <div>Faculty <br/><br/> <div style={{fontSize: '0.8em'}}>Michele Mauri <br/>Angeles Briones<br/>Gabriele Colombo<br/>Simone Vantini<br/>Salvatore Zingale</div></div>
+          <div>Teaching assistants <br/><br/> <div style={{fontSize: '0.8em'}}>Antonella Autuori <br/>Andrea Benedetti<br/>Matteo Bettini<br/>Tommaso Elli<br/>Andrea Febres Medina<br/>Beatrice Gobbo</div></div>
+          <div style={{width: '50%', alignSelf: 'flex-start'}}>
+          <img src={
+            process.env.PUBLIC_URL +
+            "/assets/about/density_logo.png"
+          }
+          alt = "density design"
+          style ={{height: '5em', width: 'auto', margin: '1em'}}
+          />
+          <img src={
+            process.env.PUBLIC_URL +
+            "/assets/about/poli_logo.png"
+          }
+          alt = "polimi"
+          style ={{height: '5em', width: 'auto', margin: '1em'}}
+          />
+          </div>
+          </div>
         </footer>
       </div>
     </div>
