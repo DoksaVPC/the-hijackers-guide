@@ -2,6 +2,7 @@ import { React, useState, useRef, useEffect } from "react";
 import Controller from "../components/controller";
 import DataCard from "../components/dataCard";
 import Carousel from "../components/carousel";
+import Credits from "../components/credits";
 import Lottie from "react-lottie";
 import lockAnimation from "../lottie/lock_animation.json";
 import { ReactComponent as DocumentIcon } from "../document.svg";
@@ -265,6 +266,10 @@ function Grid(props) {
     }
     if (videoCurrentTime >= UNLOCK_TIME[props.sectionId] && isLocked) {
       setLocked(false);
+    } else if (videoCurrentTime < UNLOCK_TIME[props.sectionId] && !isLocked) {
+      setLocked(true);
+      setHandlerPosX((gridWidth / 3) * 2 - handlerRadius);
+      setHandlerPosY((gridHeight / 3) * 2 - handlerRadius);
     }
     if (video1.current.volume !== volume) {
       video1.current.volume = volume;
@@ -359,6 +364,7 @@ function Grid(props) {
               <video
                 style={{ minWidth: (gridWidth / 3) * 2 }}
                 ref={video1}
+                preload="auto"
                 onTimeUpdate={event => handleOnPlay(event)}
                 onDurationChange={event => getVideoDuration(event)}
                 onEnded={() => {
@@ -427,6 +433,18 @@ function Grid(props) {
                       }
                     />
                   </video>
+                )}
+                {videoCurrentTime >= UNLOCK_TIME[props.sectionId] && (
+                  <div
+                    className="center-right"
+                    style={{
+                      width: '100%',
+                      height: handlerPosY + handlerRadius,
+                      animationDelay: "0.5s"
+                    }}
+                  >
+                    <Credits sectionId={props.sectionId} width={gridWidth / 3} height = {gridHeight / 3}/>
+                  </div>
                 )}
               </div>
             </div>

@@ -34,7 +34,8 @@ function MenuItem(props) {
         onClick={handleClick}
         ariaLabel={`Scroll to ${props.name}`}
       >
-        <div className="anchors-button">{props.name}</div>
+
+        <div className="anchors-button"><img alt="" src={process.env.PUBLIC_URL + "/assets/navButtonBlack.svg"} /><span style={{position: 'absolute'}}>{props.name}</span></div>
       </a>
     </li>
   );
