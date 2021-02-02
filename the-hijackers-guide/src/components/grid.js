@@ -276,6 +276,20 @@ function Grid(props) {
     }
   }
 
+  function handleOnPlaying(e) {
+    if (videoEnded) {
+      setVideoEnded(false);
+    }
+    setCurrentTime(e.target.currentTime);
+    time.current = e.target.currentTime;
+    for (let i = 1; i < videoRefs.length; i++) {
+      if (videoRefs[i] !== null) {
+        videoRefs[i].currentTime = time.current;
+        videoRefs[i].play();
+      }
+    }
+  }
+
   let handleChange = function(value) {
     setCurrentTime(value);
     time.current = value;
@@ -371,6 +385,7 @@ function Grid(props) {
                   setIsPlaying(false);
                   setVideoEnded(true);
                 }}
+                onPlaying={event => handleOnPlaying(event)}
               >
                 <source
                   src={
